@@ -5,6 +5,7 @@ pages:
   image: angular/ngcontainer
   stage: deploy
   script:
+    - npm install
     - ng build
     - mkdir .public
     - cp dist/pecadille .public
