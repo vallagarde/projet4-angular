@@ -1,0 +1,16 @@
+stages:
+  - deploy
+
+pages:
+  image: angular/ngcontainer
+  stage: deploy
+  script:
+    - ng build
+    - mkdir .public
+    - cp dist/pecadille .public
+    - mv .public public
+  artifacts:
+    paths:
+      - public
+  
+  
