@@ -6,7 +6,7 @@ pages:
   stage: deploy
   script:
     - yarn install
-    - yarn ng build --prod
+    - yarn ng build --prod --href /pecadille/
     - mkdir .public
     - cp -r dist/pecadille .public
     - mv .public/pecadille public
