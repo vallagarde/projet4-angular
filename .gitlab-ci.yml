@@ -2,11 +2,11 @@ stages:
   - deploy
 
 pages:
-  image: angular/ngcontainer
+  image: node:12-alpine
   stage: deploy
   script:
-    - npm install
-    - ng build
+    - yarn install
+    - yarn ng build
     - mkdir .public
     - cp dist/pecadille .public
     - mv .public public
