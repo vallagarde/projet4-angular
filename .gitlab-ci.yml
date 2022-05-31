@@ -5,11 +5,11 @@ pages:
   image: node:12-alpine
   stage: deploy
   script:
-    - yarn install
-    - yarn ng build --prod --href /pecadille/
-    - mkdir .public
-    - cp -r dist/pecadille .public
-    - mv .public/pecadille public
+    - npm install -g @angular/cli@10.2.0
+    - npm install
+    - ng build --prod --base-href /pecadille/
+    - mkdir -p public
+    - mv dist/pecadille/* public/
   artifacts:
     paths:
       - public
