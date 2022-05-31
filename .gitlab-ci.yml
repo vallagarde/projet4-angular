@@ -8,7 +8,7 @@ pages:
     - yarn install
     - yarn ng build --prod
     - mkdir .public
-    - cp dist/pecadille .public
+    - cp -r dist/pecadille .public
     - mv .public/pecadille public
   artifacts:
     paths:
