@@ -1,8 +1,9 @@
 stages:
   - deploy
 
+
 pages:
-  image: node:12-alpine
+  image: node:16.15-alpine
   stage: deploy
   cache:
     paths:
