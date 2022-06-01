@@ -1,21 +1,13 @@
-stages:
-  - deploy
-
+image: node:latest
 
 pages:
-  image: node:latest
-  stage: deploy
   cache:
     paths:
       - node_modules/
   script:
-    - npm install -g @angular/cli@10.2.0
+    - npm install -g @angular/cli@10.1.3
     - npm install
-    - ng build --prod --base-href /pecadille/
-    - mkdir -p public
-    - mv dist/pecadille/* public/
+    - npm run buildProd
   artifacts:
     paths:
       - public
-  
-  
