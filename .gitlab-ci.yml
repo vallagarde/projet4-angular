@@ -3,7 +3,7 @@ stages:
 
 
 pages:
-  image: node:16.15-alpine
+  image: node:latest
   stage: deploy
   cache:
     paths:
