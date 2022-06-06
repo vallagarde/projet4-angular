@@ -2,7 +2,7 @@ image: node:latest
 
 pages:
   script:
-    - npm install -g @angular/cli
+    - npm install -g @angular/cli@13.3.5
     - npm install
     - ng build --base-href "/pecadille/"
   artifacts:
