@@ -1,1 +1,24 @@
-<p>meteo works!</p>
+<html>
+<header>
+
+</header>
+<body>
+
+<table align="center">
+  <thead>
+    <tr>
+      <th>Nom de ville</th>
+      <th>Direction du vent</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let meteo of _meteos">
+      <td>{{meteo.city_name}}</td>
+      <td>{{meteo.data[0].wind_cdir}}</td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

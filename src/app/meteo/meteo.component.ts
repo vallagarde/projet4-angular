@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NodeapiService } from '../api/nodeapi.service';
+import { Meteo } from '../models/meteo.model';
 
 @Component({
   selector: 'app-meteo',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MeteoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private api: NodeapiService) { }
 
   ngOnInit(): void {
+    this.getMeteos();
   }
+
+  _meteos: Meteo[] = [];
+  getMeteos(){
+    this.api.getMeteos()
+    .subscribe(
+      (data) => {this._meteos=data}
+    );
+  }
+
 
 }
