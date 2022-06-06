@@ -4,7 +4,7 @@ pages:
   script:
     - npm install -g @angular/cli@13.3.5
     - npm install
-    - ng build --base-href=/projet4-angular/"
+    - ng build --base-href /projet4-angular/"
   artifacts:
     paths:
       - public
