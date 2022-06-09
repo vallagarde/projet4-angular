@@ -1,23 +1,22 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AuthServiceService } from '../authService/auth-service.service';
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  title = 'Demo';
-  greeting = {};
-
-  constructor(private auth: AuthServiceService, private http: HttpClient) {
-    http.get('resource').subscribe(data => this.greeting = data);
-  }
-
-  authenticated() { return this.auth.authenticated; }
+  content?: string;
+  constructor(private userService: UserService) { }
   ngOnInit(): void {
+    this.userService.getPublicContent().subscribe(
+      data => {
+        this.content = data;
+      },
+      err => {
+        this.content = JSON.parse(err.error).message;
+      }
+    );
   }
-
 }
