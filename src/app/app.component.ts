@@ -10,7 +10,7 @@ import Validation from './utils/validation'
 })
 export class AppComponent implements OnInit {
 
-
+  title= "pecadille";
   /**
  * Initialisation du controle de formulaire pour authentification
  */
@@ -29,11 +29,12 @@ export class AppComponent implements OnInit {
 /**
  * Initialisation de l'authentification
  */
-  private roles: string[] = [];
+  roles: string[] = [];
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
+
 /**
  * Initialisation de l'authentification
  */

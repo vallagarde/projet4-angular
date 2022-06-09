@@ -5,7 +5,6 @@ const AUTH_API = 'http://localhost:5000/api/auth/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-const role = ["user"]
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +17,7 @@ export class AuthService {
       password
     }, httpOptions);
   }
-  register(username: string, email: string, password: string): Observable<any> {
+  register(username: string, email: string, password: string, role: String[]): Observable<any> {
     return this.http.post(AUTH_API + 'signup', {
       username,
       email,
@@ -27,12 +26,15 @@ export class AuthService {
     }, httpOptions);
   }
 
+  registerUser(username: string, email: string, password: string): Observable<any> {
+    return this.register(username,email,password, ["user"])
+  }
+
   registerAdmin(username: string, email: string, password: string): Observable<any> {
-    return this.http.post(AUTH_API + 'signup', {
-      username,
-      email,
-      password,
-      role : ["admin","user"]
-    }, httpOptions);
+    return this.register(username,email,password, ["admin"])
+  }
+
+  registerMod(username: string, email: string, password: string): Observable<any> {
+    return this.register(username,email,password, ["mod"])
   }
 }

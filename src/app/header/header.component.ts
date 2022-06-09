@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { finalize } from 'rxjs';
+import { TokenStorageService } from '../_services/token-storage.service';
+
 
 @Component({
   selector: 'app-header',
@@ -10,13 +9,30 @@ import { finalize } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() {
+  private roles: string[] = [];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  showModeratorBoard = false;
+  username?: string;
 
+  constructor(private tokenStorageService: TokenStorageService) {
    }
-
-
-
   ngOnInit(): void {
+
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+      this.username = user.username;
+    }
+  }
+  logout(): void {
+    this.tokenStorageService.signOut();
+    window.location.reload();
   }
 
-}
+  }
+
+
