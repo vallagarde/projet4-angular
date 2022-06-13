@@ -4,6 +4,8 @@
 </header>
 <body>
 
+  <ngb-datepicker #dp *ngModel="model" (navigate)="date = $event.next"></ngb-datepicker>
+
 <table align="center">
   <thead>
     <tr>
