@@ -25,6 +25,13 @@ getMeteos(): Observable<Meteo[]>{
 
 }
 
+getMeteobyDateandPlace(date: String, place: String ): Observable<Meteo>{
+  const headers = new HttpHeaders().set("Content-Type", "application/json");
+  return this.http.get<Meteo>(NODE_API_URL + '/one/'+date +"/"+place, { headers}).pipe(catchError(this.handleError))
+
+}
+
+
 private handleError(error: Response | any) {
   return throwError(error);
 }
