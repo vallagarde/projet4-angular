@@ -22,17 +22,18 @@
 
       <select #sel class="form-select" aria-label="Default select example">
         <option selected>Liste de Villes</option>
-        <option value="Groix">Picauville</option>
-        <option value="Biarritz">Biarritz</option>
+        <option value="Picauville">Picauville</option>
+        <option value="Groix">Groix</option>
         <option value="Roscoff">Roscoff</option>
       </select>
 
+      <h1>{{sel.value}}</h1>
 
     </div>
 
     </div>
     <div class="row">
-      <button type="button" class="btn btn-primary" (onclick)="getMeteo(sel.value)">Chercher la météo</button>
+      <button type="button" class="btn btn-primary" (click)="getMeteo(sel.value)">Chercher la météo</button>
     </div>
   </div>
 
