@@ -1,7 +1,9 @@
+import { DataMeteo } from '../models/datameteo.model';
+
 export class Meteo{
    constructor(
      public meteoId: string,
-     public data: any[],
+     public DataMeteo: any[],
      public city_name: string,
      public lon : Number,
      public timezone : String,

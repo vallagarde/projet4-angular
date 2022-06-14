@@ -3,6 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  Node_Api_Url: "https://projet4-node-s.herokuapp.com/api",
+  Java_Api_Url:"Projet4backspring-env.eba-mt7gag45.eu-west-3.elasticbeanstalk.com",
   production: false
 };
 
