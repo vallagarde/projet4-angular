@@ -21,6 +21,8 @@ export class MeteoComponent implements OnInit {
   date!: {year: number, month: number};
   city_name = '';
   _meteo : DataMeteo | undefined;
+
+
   //_meteos: Meteo[] = [];
 
   /*
@@ -32,8 +34,8 @@ export class MeteoComponent implements OnInit {
   }
   */
 
-  getMeteo(city_name:string){
-    this.api.getMeteobyDateandPlace(this.model, city_name)
+  getMeteo(cityName:string){
+    this.api.getMeteobyDateandPlace(this.model, cityName)
     .subscribe(
       (data) => {this._meteo = data}
     )
