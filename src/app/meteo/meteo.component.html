@@ -4,21 +4,53 @@
 </header>
 <body>
 
-<table align="center">
-  <thead>
-    <tr>
-      <th>Nom de ville</th>
-      <th>Direction du vent</th>
 
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let meteo of _meteos">
-      <td>{{meteo.city_name}}</td>
-      <td>{{meteo.data[0].wind_cdir}}</td>
-    </tr>
-  </tbody>
-</table>
+
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-5 m-4">
+      <p>Simple datepicker</p>
+      <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next" [displayMonths]=1 [navigation]="'select'"></ngb-datepicker>
+
+      <pre>Month: {{ date.month }}.{{ date.year }}</pre>
+      <pre>Model: {{ model | json }}</pre>
+    </div>
+    <div class="col-5 m-4">
+
+
+      <select #sel class="form-select" aria-label="Default select example">
+        <option selected>Liste de Villes</option>
+        <option value="Groix">Picauville</option>
+        <option value="Biarritz">Biarritz</option>
+        <option value="Roscoff">Roscoff</option>
+      </select>
+
+
+    </div>
+
+    </div>
+    <div class="row">
+      <button type="button" class="btn btn-primary" (onclick)="getMeteo(sel.value)">Chercher la météo</button>
+    </div>
+  </div>
+
+  <table align="center" *ngIf="_meteo">
+    <thead>
+      <tr>
+        <th>Nom de ville</th>
+        <th>Direction du vent</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{_meteo.precip}}</td>
+        <td>{{_meteo.temp}}</td>
+      </tr>
+    </tbody>
+  </table>
 
 </body>
 </html>
