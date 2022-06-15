@@ -1,1 +1,33 @@
-<p>seance works!</p>
+<form>
+
+    <div class="form-group">
+    <label for="description">titre</label>
+    <input
+    type="text"
+    class="form-control"
+    name="titre"
+    [(ngModel)]="form.seance.titre"
+    required
+    #description="ngModel">
+  </div>
+
+  <div class="form-group">
+    <label for="description">description</label>
+    <input
+    type="text"
+    class="form-control"
+    name="description"
+    [(ngModel)]="form.seance.description"
+    required
+    #description="ngModel">
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-primary btn-block">
+      Ajouter Seance
+    </button>
+  </div>
+
+
+
+</form>

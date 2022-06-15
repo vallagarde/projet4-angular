@@ -7,6 +7,7 @@ const API_URL = 'http://localhost:5000/api/test/';
 })
 export class UserService {
   constructor(private http: HttpClient) { }
+
   getPublicContent(): Observable<any> {
     return this.http.get(API_URL + 'all', { responseType: 'text' });
   }

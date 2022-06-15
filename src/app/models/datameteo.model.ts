@@ -37,6 +37,8 @@ export class DataMeteo{
     public temp:number,
     public min_temp:number,
     public clouds_mid:number,
-    public clouds_low:number
+    public clouds_low:number,
+    public index:number,
+    public id:number
   ){}
 }

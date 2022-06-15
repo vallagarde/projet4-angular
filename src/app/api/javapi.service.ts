@@ -19,8 +19,8 @@ export class JavapiService {
     return throwError(error);
   }
 
-  createSeance( seance: Seance): Observable<Seance>{
-    return this.http.post<Seance>(Seance_API+ "/seances", seance, httpOptions);
+  createSeance( seance: Seance, id: number): Observable<Seance>{
+    return this.http.post<Seance>(Seance_API+ "/seances", {seance, id}, httpOptions);
   }
 
 }
