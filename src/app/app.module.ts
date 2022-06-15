@@ -21,6 +21,7 @@ import { BoardModeratorComponent } from './board-moderator/board-moderator.compo
 import { BoardUserComponent } from './board-user/board-user.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { SeanceComponent } from './seance/seance.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
-    ProfileComponent
+    ProfileComponent,
+    SeanceComponent
   ],
   imports: [
     BrowserModule,
