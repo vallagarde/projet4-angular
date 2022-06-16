@@ -8,6 +8,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -22,6 +23,8 @@ import { BoardUserComponent } from './board-user/board-user.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { SeanceComponent } from './seance/seance.component';
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
+
 
 
 @NgModule({
@@ -52,7 +55,7 @@ import { SeanceComponent } from './seance/seance.component';
     MatFormFieldModule,
     MatNativeDateModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

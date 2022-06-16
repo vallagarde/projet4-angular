@@ -14,19 +14,19 @@ export class SeanceComponent implements OnInit {
     seance: Seance
   }
   isAccepted = false;
-  userId = -1;
+  userMail = "";
 
   constructor(private javapiService: JavapiService, private tokenStorage: TokenStorageService) {
     this.isAccepted= false;
-    this.userId = this.tokenStorage.getUser().id;
+    this.userMail = this.tokenStorage.getUser().email;
   }
 
   ngOnInit(): void {
   }
 
-  onSubmit(): void {
+  createSeance(): void {
 
-    this.javapiService.createSeance(this.form.seance, this.userId).subscribe(
+    this.javapiService.createSeance(this.form.seance.titre, this.form.seance.description , this.userMail).subscribe(
     data => {
       this.isAccepted =true;
     }
