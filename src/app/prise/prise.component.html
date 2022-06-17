@@ -1,0 +1,77 @@
+<form>
+
+  <div class="form-group">
+  <label for="espece">espèce</label>
+  <input
+  type="text"
+  class="form-control"
+  name="espece"
+  [(ngModel)]="form.prise.espece"
+  required
+  #description="ngModel">
+</div>
+
+<div class="form-group">
+  <label for="taille">taille (cm)</label>
+  <input
+  type="number"
+  class="form-control"
+  name="taille"
+  [(ngModel)]="form.prise.taille"
+  required
+  #description="ngModel">
+</div>
+
+<div class="form-group">
+  <label for="poids">poids (kg)</label>
+  <input
+  type="number"
+  class="form-control"
+  name="poids"
+  [(ngModel)]="form.prise.poids"
+  required
+  #description="ngModel">
+</div>
+
+<div class="form-group">
+  <label for="nomLieu">nom du spot</label>
+  <input
+  type="text"
+  class="form-control"
+  name="nomLieu"
+  [(ngModel)]="form.prise.nomLieu"
+  required
+  #description="ngModel">
+</div>
+
+<div class="form-group">
+  <label for="latitude">latitude Nord</label>
+  <input
+  type="number"
+  class="form-control"
+  name="latitude"
+  [(ngModel)]="form.prise.coorLieu[0]"
+  required
+  #description="ngModel">
+</div>
+
+<div class="form-group">
+  <label for="longitude">longitude Ouest</label>
+  <input
+  type="number"
+  class="form-control"
+  name="longitude"
+  [(ngModel)]="form.prise.coorLieu[1]"
+  required
+  #description="ngModel">
+</div>
+
+<div class="form-group">
+  <button class="btn btn-primary btn-block" (click)="addPrise()">
+    Ajouter une Prise
+  </button>
+</div>
+
+
+
+</form>

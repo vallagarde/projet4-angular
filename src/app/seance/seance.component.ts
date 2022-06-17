@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JavapiService } from '../api/javapi.service';
+import { Prise } from '../models/prise.model';
 import { Seance } from '../models/seance.model';
 import { TokenStorageService } from '../_services/token-storage.service';
 
@@ -9,6 +10,8 @@ import { TokenStorageService } from '../_services/token-storage.service';
   styleUrls: ['./seance.component.scss']
 })
 export class SeanceComponent implements OnInit {
+
+  n: number=0;
 
   form: any ={
     seance: Seance
@@ -31,6 +34,10 @@ export class SeanceComponent implements OnInit {
       this.isAccepted =true;
     }
     )
+  }
+
+  createPrise(prise: Prise){
+    this.form.seance.prise[this.n++] =prise;
   }
 
 }

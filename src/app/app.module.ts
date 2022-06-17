@@ -24,6 +24,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { SeanceComponent } from './seance/seance.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { PriseComponent } from './prise/prise.component';
 
 
 
@@ -40,7 +41,8 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     BoardModeratorComponent,
     BoardUserComponent,
     ProfileComponent,
-    SeanceComponent
+    SeanceComponent,
+    PriseComponent
   ],
   imports: [
     BrowserModule,

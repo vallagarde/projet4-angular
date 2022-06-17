@@ -8,7 +8,9 @@ export class Seance{
 
     public  description:String,
 
-    public prises : [Prise]
+    public prises : [Prise],
+
+    public dates: Date
 
   ){}
 }
