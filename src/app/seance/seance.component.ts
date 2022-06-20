@@ -36,7 +36,7 @@ export class SeanceComponent implements OnInit {
 
   createSeance(): void {
 
-    this.javapiService.createSeance(this.form.seance.titre, this.form.seance.description , this.prises, this.userMail).subscribe(
+    this.javapiService.createSeance(this.form.seance.titre, this.form.seance.description , this.prises, this.userMail, this._meteo).subscribe(
     data => {
       this.isAccepted =true;
     }
@@ -53,8 +53,6 @@ export class SeanceComponent implements OnInit {
 
     this._meteo=dataMeteo;
     this.asMeteo=true;
-
-
   }
 
 }
