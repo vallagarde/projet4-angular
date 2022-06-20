@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Prise } from '../models/prise.model';
 import { SeanceComponent } from '../seance/seance.component';
 
@@ -18,9 +18,17 @@ export class PriseComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  @Output()
+  childToParent = new EventEmitter<Prise>();
+
   addPrise(){
 
-    this.seance.createPrise(this.form.prise);
+    this.childToParent.emit(this.form.prise);
+    this.form.prise.nomLieu ="";
+    this.form.prise.coorLieu= null;
+    this.form.prise.espece = "";
+    this.form.prise.taille = null;
+    this.form.prise.poids =null;
 
   }
 

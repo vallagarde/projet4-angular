@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { Prise } from '../models/prise.model';
 import { Seance } from '../models/seance.model'
 import { TokenStorageService } from '../_services/token-storage.service';
 
@@ -24,7 +25,7 @@ export class JavapiService {
     return throwError(error);
   }
 
-  createSeance( titre: String, description: String, userEmail: String): Observable<Seance>{
+  createSeance( titre: String, description: String,prises:Prise[], userEmail: String): Observable<Seance>{
     return this.http.post<Seance>(Seance_API+ "/seances", {
       description,
       titre,

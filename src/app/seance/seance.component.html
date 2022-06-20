@@ -22,11 +22,59 @@
     #description="ngModel">
   </div>
 
+  <table class="table" *ngIf="asPrise">
+    <thead>
+      <tr>
+        <th scope="col">Prise</th>
+        <th scope="col">Espece</th>
+        <th scope="col">Taille</th>
+        <th scope="col">Poids</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prise of prises">
+        <th></th>
+        <td>{{prise.espece}}</td>
+        <td>{{prise.taille}}</td>
+        <td>{{prise.poids}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+
+
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Ajouter une prise
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+        <app-prise (childToParent)="createPrise($event)"></app-prise>
+    </mat-expansion-panel>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Meteo
+        </mat-panel-title>
+        <mat-panel-description *ngIf="asMeteo">
+          Temperature: {{_meteo.temp}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+        <app-meteo (childToParent)="getMeteo($event)"></app-meteo>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+
   <div class="form-group">
     <button class="btn btn-primary btn-block" (click)="createSeance()">
       Ajouter Seance
     </button>
   </div>
+
 
 
 

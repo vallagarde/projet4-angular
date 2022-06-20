@@ -8,7 +8,7 @@ export class Seance{
 
     public  description:String,
 
-    public prises : [Prise],
+    public prises: Array<Prise>,
 
     public dates: Date
 
