@@ -1,24 +1,47 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
-import { Meteo } from '../models/meteo.model';
+import { DataMeteo } from '../models/datameteo.model';
+import { Prise } from '../models/prise.model';
+import { Seance } from '../models/seance.model'
+import { TokenStorageService } from '../_services/token-storage.service';
 
-const API_URL = "";
+const Seance_API = 'http://localhost:5000/api/seance';
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class JavapiService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private tokenStorage: TokenStorageService) {
 
-  getMeteos(): Observable<Meteo[]>{
-    const headers = new HttpHeaders().set("Content-Type", "application/json");
-    return this.http.get<Meteo[]>(API_URL + '/todos', { headers}).pipe(catchError(this.handleError))
-  }
+   }
+
 
   private handleError(error: Response | any) {
     return throwError(error);
   }
 
+  createSeance( titre: String, description: String,prises:Prise[], userEmail: String, _meteo:DataMeteo): Observable<Seance>{
+    return this.http.post<Seance>(Seance_API+ "/seances", {
+      description,
+      titre,
+      userEmail,
+      prises,
+      meteoId: _meteo.id,
+      meteoIndex: _meteo.index
+    });
+  }
+
 }
+
+
+
+
+
+
+

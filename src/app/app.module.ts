@@ -6,6 +6,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +23,10 @@ import { BoardModeratorComponent } from './board-moderator/board-moderator.compo
 import { BoardUserComponent } from './board-user/board-user.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { SeanceComponent } from './seance/seance.component';
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { PriseComponent } from './prise/prise.component';
+
 
 
 @NgModule({
@@ -35,7 +41,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
-    ProfileComponent
+    ProfileComponent,
+    SeanceComponent,
+    PriseComponent
   ],
   imports: [
     BrowserModule,
@@ -48,9 +56,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 
     MatDatepickerModule,
     MatFormFieldModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatExpansionModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NodeapiService } from '../api/nodeapi.service';
 //import { Meteo } from '../models/meteo.model';
 import { DataMeteo } from '../models/datameteo.model';
 import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
+import { Prise } from '../models/prise.model';
 
 @Component({
   selector: 'app-meteo',
@@ -23,23 +24,25 @@ export class MeteoComponent implements OnInit {
   _meteo : DataMeteo | undefined;
 
 
-  //_meteos: Meteo[] = [];
-
-  /*
-  getMeteos(){
-    this.api.getMeteos()
-    .subscribe(
-      (data) => {this._meteos=data}
-    );
-  }
-  */
 
   getMeteo(cityName:string){
     this.api.getMeteobyDateandPlace(this.model, cityName)
     .subscribe(
       (data) => {this._meteo = data}
     )
+
+
+
+
   }
+
+  validateMeteo(){
+    this.childToParent.emit(this._meteo);
+  }
+
+  @Output()
+  childToParent = new EventEmitter<DataMeteo>();
+
   selectToday() {
     this.model = this.calendar.getToday();
   }

@@ -37,6 +37,8 @@
     </div>
   </div>
 
+  <button type="button" class="btn btn-primary" (click)="validateMeteo()">Valider la météo</button>
+
   <table align="center" *ngIf="_meteo">
     <thead>
       <tr>
@@ -47,8 +49,10 @@
     </thead>
     <tbody>
       <tr>
-        <td>{{_meteo.precip}}</td>
-        <td>{{_meteo.temp}}</td>
+        <td>{{_meteo.index}}</td>
+        <td><span class="material-symbols-outlined">
+          device_thermostat
+          </span>{{_meteo.temp}}</td>
       </tr>
     </tbody>
   </table>
