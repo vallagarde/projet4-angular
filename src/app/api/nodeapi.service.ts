@@ -26,9 +26,9 @@ getMeteos(): Observable<Meteo[]>{
 
 }
 
-getMeteobyDateandPlace(date: {year: number, month: number, day: number}, place: String ): Observable<DataMeteo>{
+getMeteobyDateandPlace(year:String, month:String, day:String, place: String ): Observable<DataMeteo>{
   const headers = new HttpHeaders().set("Content-Type", "application/json");
-  let dateString=  date.year.toString() +"-0"+ date.month.toString()+"-"+ date.day.toString();
+  let dateString=  year +"-"+ month+"-"+ day;
   return this.http.get<DataMeteo>(NODE_API_URL + '/meteo/one/'+dateString +"/"+place, { headers}).pipe(catchError(this.handleError))
 
 }

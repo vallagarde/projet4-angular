@@ -4,18 +4,15 @@
 </header>
 <body>
 
-
-
-
-
   <div class="container">
     <div class="row">
       <div class="col-5 m-4">
-      <p>Simple datepicker</p>
-      <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next" [displayMonths]=1 [navigation]="'select'"></ngb-datepicker>
-
-      <pre>Month: {{ date.month }}.{{ date.year }}</pre>
-      <pre>Model: {{ model | json }}</pre>
+        <mat-form-field>
+          <input matInput [(ngModel)]="model" [matDatepicker]="picker"  (dateInput)="addEvent('input', $event)"
+          (dateChange)="addEvent('change', $event)" placeholder="Choisissez une date" >
+          <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
     </div>
     <div class="col-5 m-4">
 

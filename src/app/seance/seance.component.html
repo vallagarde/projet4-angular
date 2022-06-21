@@ -1,25 +1,33 @@
 <form>
+  <div class="row">
+    <div class="col-5 m-4">
+      <div class="container">
+        <div class="form-group">
+          <label for="description">titre</label>
+          <input type="text" class="form-control" name="titre" [(ngModel)]="form.seance.titre" required
+            #description="ngModel">
+        </div>
 
-    <div class="form-group">
-    <label for="description">titre</label>
-    <input
-    type="text"
-    class="form-control"
-    name="titre"
-    [(ngModel)]="form.seance.titre"
-    required
-    #description="ngModel">
-  </div>
+        <div class="form-group">
+          <label for="description">description</label>
+          <input type="text" class="form-control" name="description" [(ngModel)]="form.seance.description" required
+            #description="ngModel">
+        </div>
 
-  <div class="form-group">
-    <label for="description">description</label>
-    <input
-    type="text"
-    class="form-control"
-    name="description"
-    [(ngModel)]="form.seance.description"
-    required
-    #description="ngModel">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-5 m-4">
+        <p>Simple datepicker</p>
+        <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next" [displayMonths]=1
+          [navigation]="'select'"></ngb-datepicker>
+
+        <pre>Month: {{ date.month }}.{{ date.year }}</pre>
+        <pre>Model: {{ model | json }}</pre>
+      </div>
+
+    </div>
   </div>
 
   <table class="table" *ngIf="asPrise">
@@ -53,7 +61,7 @@
         <mat-panel-description>
         </mat-panel-description>
       </mat-expansion-panel-header>
-        <app-prise (childToParent)="createPrise($event)"></app-prise>
+      <app-prise (childToParent)="createPrise($event)"></app-prise>
     </mat-expansion-panel>
     <mat-expansion-panel hideToggle>
       <mat-expansion-panel-header>
@@ -64,7 +72,7 @@
           Temperature: {{_meteo.temp}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-        <app-meteo (childToParent)="getMeteo($event)"></app-meteo>
+      <app-meteo (childToParent)="getMeteo($event)"></app-meteo>
     </mat-expansion-panel>
   </mat-accordion>
 
@@ -74,8 +82,6 @@
       Ajouter Seance
     </button>
   </div>
-
-
 
 
 </form>

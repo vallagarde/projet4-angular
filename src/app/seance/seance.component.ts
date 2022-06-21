@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { JavapiService } from '../api/javapi.service';
 import { DataMeteo } from '../models/datameteo.model';
 import { Prise } from '../models/prise.model';
@@ -18,6 +19,10 @@ export class SeanceComponent implements OnInit {
 
   asMeteo: Boolean =false;
   _meteo !: DataMeteo;
+
+  model!: NgbDateStruct;
+  date!: {year: number, month: number};
+  city_name = '';
 
 
   form: any ={
