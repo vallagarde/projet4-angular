@@ -19,12 +19,7 @@
 
     <div class="row">
       <div class="col-5 m-4">
-        <p>Simple datepicker</p>
-        <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next" [displayMonths]=1
-          [navigation]="'select'"></ngb-datepicker>
-
-        <pre>Month: {{ date.month }}.{{ date.year }}</pre>
-        <pre>Model: {{ model | json }}</pre>
+        <app-map></app-map>
       </div>
 
     </div>

@@ -31,6 +31,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SeanceComponent } from './seance/seance.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { PriseComponent } from './prise/prise.component';
+import { MapComponent } from './map/map.component';
 
 
 
@@ -60,7 +61,8 @@ const MY_FORMATS = {
     BoardUserComponent,
     ProfileComponent,
     SeanceComponent,
-    PriseComponent
+    PriseComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
