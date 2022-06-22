@@ -17,8 +17,7 @@ width="100%"
 [options]="marker.options"
 >
 </map-marker>
-<map-marker
-
+<map-marker *ngIf="asMarker"
 [position]="marker.position"
 [label]="marker.label"
 [title]="marker.title"

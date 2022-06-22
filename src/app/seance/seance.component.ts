@@ -19,10 +19,10 @@ export class SeanceComponent implements OnInit {
   }
 
   onKeyTitre(event: any) { // without type info
-    this.markComp.titre += event.target.value + ' | ';
+    this.markComp.titre = event.target.value;
   }
   onKeyDesc(event: any) { // without type info
-    this.markComp.description += event.target.value + ' | ';
+    this.markComp.description = event.target.value;
   }
 
   n: number=0;
@@ -38,7 +38,9 @@ export class SeanceComponent implements OnInit {
 
 
   form: any ={
-    seance: Seance
+    seance: Seance,
+    latitude:Number,
+    longitude:Number
   }
   isAccepted = false;
   userMail = "";
@@ -58,6 +60,12 @@ export class SeanceComponent implements OnInit {
       this.isAccepted =true;
     }
     )
+  }
+
+  createCoord(coords:any){
+    this.form.latitude=coords.lat;
+    this.form.longitude=coords.lng;
+
   }
 
   createPrise(prise : Prise){

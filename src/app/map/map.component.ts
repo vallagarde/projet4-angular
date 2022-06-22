@@ -1,4 +1,4 @@
-import { Component, OnInit, Input  } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 
 @Component({
   selector: 'app-map',
@@ -9,6 +9,7 @@ export class MapComponent implements OnInit {
 
   markers: any[]=[];
   marker: any;
+  asMarker=false;
 
   @Input()
   markerComp: any = {
@@ -37,7 +38,14 @@ export class MapComponent implements OnInit {
   click(event: google.maps.MapMouseEvent) {
     console.log(event);
     this.addMarker(event.latLng);
+    this.childToParent.emit(this.marker.position);
+    this.asMarker=true;
+
   }
+
+
+  @Output()
+  childToParent = new EventEmitter<any>();
 
   addMarkers(latlng:  google.maps.LatLng | null) {
     this.markers.push({
