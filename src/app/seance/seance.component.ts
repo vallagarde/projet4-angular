@@ -13,6 +13,18 @@ import { TokenStorageService } from '../_services/token-storage.service';
 })
 export class SeanceComponent implements OnInit {
 
+  markComp:any ={
+    titre:String,
+    description:String
+  }
+
+  onKeyTitre(event: any) { // without type info
+    this.markComp.titre += event.target.value + ' | ';
+  }
+  onKeyDesc(event: any) { // without type info
+    this.markComp.description += event.target.value + ' | ';
+  }
+
   n: number=0;
   asPrise: Boolean= false;
   prises: Prise[]=[];

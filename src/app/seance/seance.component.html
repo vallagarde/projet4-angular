@@ -1,26 +1,26 @@
 <form>
   <div class="row">
-    <div class="col-5 m-4">
+    <div class="col-4 m-4">
       <div class="container">
         <div class="form-group">
           <label for="description">titre</label>
           <input type="text" class="form-control" name="titre" [(ngModel)]="form.seance.titre" required
-            #description="ngModel">
+            #description="ngModel" (keyup)="onKeyTitre($event)">
         </div>
 
         <div class="form-group">
           <label for="description">description</label>
           <input type="text" class="form-control" name="description" [(ngModel)]="form.seance.description" required
-            #description="ngModel">
+            #description="ngModel" (keyup)="onKeyDesc($event)">
         </div>
 
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-5 m-4">
-        <app-map></app-map>
-      </div>
+
+      <div class="col-6 m-4">
+        <app-map [markerComp]="markComp"></app-map>
+
 
     </div>
   </div>
