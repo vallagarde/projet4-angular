@@ -7,6 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material/core';
+import { MatInputModule} from '@angular/material/input';
+import { MatMomentDateModule } from "@angular/material-moment-adapter";
+
+
+
 
 
 
@@ -22,12 +28,24 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { ProfileComponent } from './profile/profile.component';
-import { MatNativeDateModule } from '@angular/material/core';
 import { SeanceComponent } from './seance/seance.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { PriseComponent } from './prise/prise.component';
+import { MapComponent } from './map/map.component';
 
 
+
+const MY_FORMATS = {
+  parse: {
+    dateInput: 'DD-MM-YYYY',
+  },
+  display: {
+    dateInput: 'DD-MM-YYYY',
+    monthYearLabel: 'MMMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @NgModule({
   declarations: [
@@ -43,7 +61,8 @@ import { PriseComponent } from './prise/prise.component';
     BoardUserComponent,
     ProfileComponent,
     SeanceComponent,
-    PriseComponent
+    PriseComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -53,13 +72,15 @@ import { PriseComponent } from './prise/prise.component';
     HttpClientModule,
     NgbModule,
     BrowserAnimationsModule,
-
     MatDatepickerModule,
     MatFormFieldModule,
     MatNativeDateModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatInputModule,
+    MatMomentDateModule
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders,
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
