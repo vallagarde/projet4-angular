@@ -1,10 +1,14 @@
 
 <div class="container my-4"></div>
-<div class="row">
-<div class="col-md-4"></div>
-<div class="col-md-4">
-  <mat-card class="connexion-card">
+<div class="container my-4"></div>
 
+<div class="row">
+<div class="col-md-2"></div>
+<div class="col-md-8">
+  <mat-card class="connexion-card fitting">
+
+    <div class="row">
+      <div class="col">
     <mat-card-title class="text-center">
       Connexion
     </mat-card-title>
@@ -77,8 +81,14 @@
     <mat-card-footer *ngIf="isLoading">
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </mat-card-footer>
+  </div>
+    <div class="col">
+      <img mat-card-image class="rounded" src="https://images.pexels.com/photos/4327602/pexels-photo-4327602.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Photo of a Shiba Inu">
+    </div>
+  </div>
   </mat-card>
 </div>
-<div class="col-md-4"></div>
+
+<div class="col-md-2"></div>
 </div>
 
