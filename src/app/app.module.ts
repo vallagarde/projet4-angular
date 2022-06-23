@@ -17,6 +17,10 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
+
 
 
 
@@ -91,6 +95,8 @@ const MY_FORMATS = {
     MatCardModule,
     MatProgressBarModule,
     MatSnackBarModule,
+    MatIconModule,
+    MatToolbarModule,
     GoogleMapsModule,
   ],
   providers: [authInterceptorProviders,
