@@ -4,6 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GoogleMapsModule } from '@angular/google-maps';
+
+
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -13,7 +16,8 @@ import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { GoogleMapsModule } from '@angular/google-maps';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 
 
@@ -86,6 +90,7 @@ const MY_FORMATS = {
     MatButtonModule,
     MatCardModule,
     MatProgressBarModule,
+    MatSnackBarModule,
     GoogleMapsModule,
   ],
   providers: [authInterceptorProviders,
