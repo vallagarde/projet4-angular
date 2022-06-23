@@ -10,6 +10,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material/core';
 import { MatInputModule} from '@angular/material/input';
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { GoogleMapsModule } from '@angular/google-maps';
 
 
@@ -80,6 +83,9 @@ const MY_FORMATS = {
     MatExpansionModule,
     MatInputModule,
     MatMomentDateModule,
+    MatButtonModule,
+    MatCardModule,
+    MatProgressBarModule,
     GoogleMapsModule,
   ],
   providers: [authInterceptorProviders,

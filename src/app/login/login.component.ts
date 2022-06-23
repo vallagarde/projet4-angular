@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   };
   isLoggedIn = false;
   isLoginFailed = false;
+  isLoading =false;
   errorMessage = '';
   roles: string[] = [];
 
@@ -21,10 +22,12 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
+      this.isLoading =false;
       this.roles = this.tokenStorage.getUser().roles;
     }
   }
   onSubmit(): void {
+    this.isLoading=true;
     const { username, password } = this.form;
     this.authService.login(username, password).subscribe(
       data => {
@@ -40,6 +43,7 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = true;
       }
     );
+    this.isLoading=false;
   }
   reloadPage(): void {
     window.location.reload();

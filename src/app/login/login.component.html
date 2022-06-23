@@ -1,6 +1,12 @@
 <div class="col-md-12">
-  <div class="card card-container">
+  <mat-card class="example-card">
 
+    <mat-card-title class="text-center">
+      Connexion
+    </mat-card-title>
+
+
+    <mat-card-content class="text-center">
     <form
       *ngIf="!isLoggedIn"
       name="form"
@@ -9,10 +15,10 @@
       novalidate
     >
       <div class="form-group">
-        <label for="username">Username</label>
-        <input
+        <mat-form-field>
+        <mat-label for="username">Username</mat-label>
+        <input matInput
           type="text"
-          class="form-control"
           name="username"
           [(ngModel)]="form.username"
           required
@@ -25,12 +31,16 @@
         >
           Username is required!
         </div>
+      </mat-form-field>
       </div>
+
+
+
       <div class="form-group">
-        <label for="password">Password</label>
-        <input
+        <mat-form-field>
+        <mat-label for="password">Password</mat-label>
+        <input matInput
           type="password"
-          class="form-control"
           name="password"
           [(ngModel)]="form.password"
           required
@@ -47,10 +57,12 @@
             Password must be at least 6 characters
           </div>
         </div>
+      </mat-form-field>
       </div>
-      <div class="form-group">
-        <button class="btn btn-primary btn-block">
-          Login
+
+      <div class="form-group text-center">
+        <button mat-raised-button color="primary">
+          Se connecter
         </button>
       </div>
       <div class="form-group">
@@ -63,8 +75,12 @@
         </div>
       </div>
     </form>
+  </mat-card-content>
     <div class="alert alert-success" *ngIf="isLoggedIn">
       Logged in as {{ roles }}.
     </div>
-  </div>
+    <mat-card-footer *ngIf="isLoading">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer>
+  </mat-card>
 </div>
