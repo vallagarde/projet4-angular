@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Inject, OnInit, Output, Renderer2 } from '@angular/core';
 import { TokenStorageService } from './_services/token-storage.service';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import Validation from './utils/validation'
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,11 @@ import Validation from './utils/validation'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+  @HostBinding('class') className = '';
+
+
+  isDark =false;
 
   title= "pecadille";
   /**
@@ -41,8 +47,11 @@ export class AppComponent implements OnInit {
 
 
 
-  constructor(private tokenStorageService: TokenStorageService, private formBuilder: FormBuilder) { }
+  constructor(private tokenStorageService: TokenStorageService, private formBuilder: FormBuilder,@Inject(DOCUMENT) private document: Document,
+  private renderer: Renderer2) { } /// l'import d document et du renderer2 permettent d'avoir ccès a la balise body dans l'index.html
   ngOnInit(): void {
+
+
 
     /**
     * Chargement des informations pour valider le formulaire de connexion ou de sign-up
@@ -97,5 +106,22 @@ export class AppComponent implements OnInit {
   logout(): void {
     this.tokenStorageService.signOut();
     window.location.reload();
+  }
+
+  @Output()
+  childToParent = new EventEmitter<boolean>();
+
+  changeDark(isDark: boolean){
+
+    this.childToParent.emit(isDark)
+
+    this.isDark=isDark;
+
+    if (this.isDark){
+      this.renderer.addClass(this.document.body, "my-dark-theme");
+    }else{
+      this.renderer.removeClass(this.document.body, "my-dark-theme");
+
+    }
   }
 }

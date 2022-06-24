@@ -19,6 +19,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 
 
 
@@ -97,6 +99,7 @@ const MY_FORMATS = {
     MatSnackBarModule,
     MatIconModule,
     MatToolbarModule,
+    MatSlideToggleModule,
     GoogleMapsModule,
   ],
   providers: [authInterceptorProviders,
