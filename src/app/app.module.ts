@@ -20,6 +20,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatTabsModule} from '@angular/material/tabs';
+
 
 
 
@@ -100,6 +102,7 @@ const MY_FORMATS = {
     MatIconModule,
     MatToolbarModule,
     MatSlideToggleModule,
+    MatTabsModule,
     GoogleMapsModule,
   ],
   providers: [authInterceptorProviders,

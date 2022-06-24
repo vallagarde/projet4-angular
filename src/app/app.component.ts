@@ -52,6 +52,14 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
 
 
+    if (window.sessionStorage.getItem('darkMode')=='true'){
+      this.renderer.addClass(this.document.body, "my-dark-theme");
+    }else{
+      this.renderer.removeClass(this.document.body, "my-dark-theme");
+
+    }
+
+
 
     /**
     * Chargement des informations pour valider le formulaire de connexion ou de sign-up
@@ -113,15 +121,20 @@ export class AppComponent implements OnInit {
 
   changeDark(isDark: boolean){
 
-    this.childToParent.emit(isDark)
-
-    this.isDark=isDark;
-
     if (this.isDark){
+      window.sessionStorage.setItem('darkMode', 'true');
       this.renderer.addClass(this.document.body, "my-dark-theme");
     }else{
+      window.sessionStorage.setItem('darkMode', '');
       this.renderer.removeClass(this.document.body, "my-dark-theme");
 
     }
+
+    this.childToParent.emit(isDark)
+
+
+    this.isDark=isDark;
+
+
   }
 }

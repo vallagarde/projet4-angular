@@ -11,7 +11,7 @@
 
   <a mat-button class="nav-link m-2" href="/mod" color="primary" *ngIf="showModeratorBoard">Moderateur</a>
 
-  <a mat-button class="nav-link m-2" href="/user" color="primary" *ngIf="isLoggedIn">Utilisateur</a>
+  <a mat-button class="nav-link m-2" href="/user" color="primary" *ngIf="isLoggedIn">Mon compte</a>
 
   <span class="example-spacer"></span>
 
@@ -24,7 +24,7 @@
 
 
   <mat-icon class="mr-8">brightness_5</mat-icon>
-  <mat-slide-toggle (click)="changeMode()" class="mr-8">
+  <mat-slide-toggle (click)="changeMode()" class="mr-8" [checked]="isDark">
   </mat-slide-toggle>
   <mat-icon>bedtime</mat-icon>
 
