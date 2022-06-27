@@ -1,6 +1,28 @@
-<h1>{{ title }}</h1>
 
 <!-- this creates a google map on the page with the given lat/lng from -->
 <!-- the component as the initial center of the map: -->
 
-<google-map></google-map>
+<google-map  height="500px"
+width="100%"
+[center]="center"
+[options]="options"
+[zoom]="zoom"
+(mapClick)="click($event)">
+
+<map-marker
+*ngFor="let marker of markers"
+[position]="marker.position"
+[label]="marker.label"
+[title]="marker.title"
+[options]="marker.options"
+>
+</map-marker>
+<map-marker *ngIf="asMarker"
+[position]="marker.position"
+[label]="marker.label"
+[title]="marker.title"
+[options]="marker.options"
+>
+</map-marker>
+
+</google-map>

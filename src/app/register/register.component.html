@@ -1,5 +1,30 @@
-<div class="col-md-12">
-  <div class="card card-container">
+<div class="container my-4"></div>
+<div class="container my-4"></div>
+
+<div class="row">
+<div class="col-md-2"></div>
+<div class="col-md-8">
+  <mat-card class="connexion-card fitting">
+
+    <div class="row">
+      <div class="col">
+        <img mat-card-image class="rounded" src="https://images.pexels.com/photos/4327602/pexels-photo-4327602.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Photo of a Shiba Inu">
+      </div>
+      <div class="col">
+    <mat-card-title class="text-center">
+      <br>
+      <br>
+      S'enregistrer
+      <br>
+      <br>
+      <br>
+      <br>
+    </mat-card-title>
+    <mat-card-subtitle>
+
+    </mat-card-subtitle>
+
+    <mat-card-content class="text-center">
 
     <form
       *ngIf="!isSuccessful"
@@ -9,10 +34,10 @@
       novalidate
     >
       <div class="form-group">
-        <label for="username">Username</label>
-        <input
+        <mat-form-field appearance="outline">
+        <mat-label for="username">Nom d'utilisateur</mat-label>
+        <input matInput
           type="text"
-          class="form-control"
           name="username"
           [(ngModel)]="form.username"
           required
@@ -20,61 +45,70 @@
           maxlength="20"
           #username="ngModel"
         />
-        <div class="alert-danger" *ngIf="username.errors && f.submitted">
-          <div *ngIf="username.errors['required']">Username is required</div>
-          <div *ngIf="username.errors['minlength']">
+        <mat-error *ngIf="username.errors && f.submitted">
+
+          <mat-error *ngIf="username.errors['required']">Username is required</mat-error>
+          <mat-error *ngIf="username.errors['minlength']">
             Username must be at least 3 characters
-          </div>
-          <div *ngIf="username.errors['maxlength']">
+          </mat-error>
+
+          <mat-error *ngIf="username.errors['maxlength']">
             Username must be at most 20 characters
-          </div>
-        </div>
+          </mat-error>
+        </mat-error>
+        </mat-form-field>
       </div>
       <div class="form-group">
-        <label for="email">Email</label>
-        <input
+        <mat-form-field appearance="outline">
+        <mat-label for="email">Email</mat-label>
+        <input matInput
           type="email"
-          class="form-control"
           name="email"
           [(ngModel)]="form.email"
           required
           email
           #email="ngModel"
         />
-        <div class="alert-danger" *ngIf="email.errors && f.submitted">
-          <div *ngIf="email.errors['required']">Email is required</div>
-          <div *ngIf="email.errors['email']">
+        <mat-error *ngIf="email.errors && f.submitted">
+          <mat-error *ngIf="email.errors['required']">Email is required</mat-error>
+          <mat-error *ngIf="email.errors['email']">
             Email must be a valid email address
-          </div>
-        </div>
+          </mat-error>
+        </mat-error>
+        </mat-form-field>
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
-        <input
+        <mat-form-field appearance="outline">
+        <mat-label for="password">Password</mat-label>
+        <input matInput
           type="password"
-          class="form-control"
           name="password"
           [(ngModel)]="form.password"
           required
           minlength="6"
           #password="ngModel"
         />
-        <div class="alert-danger" *ngIf="password.errors && f.submitted">
-          <div *ngIf="password.errors['required']">Password is required</div>
-          <div *ngIf="password.errors['minlength']">
+        <mat-error *ngIf="password.errors && f.submitted">
+          <mat-error *ngIf="password.errors['required']">Password is required</mat-error>
+          <mat-error *ngIf="password.errors['minlength']">
             Password must be at least 6 characters
-          </div>
-        </div>
+          </mat-error>
+        </mat-error>
+        </mat-form-field>
       </div>
       <div class="form-group">
-        <button class="btn btn-primary btn-block">Sign Up</button>
+        <button mat-raised-button color="primary">Sign Up</button>
       </div>
-      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+      <mat-error *ngIf="f.submitted && isSignUpFailed">
         Signup failed!<br />{{ errorMessage }}
-      </div>
+      </mat-error>
     </form>
     <div class="alert alert-success" *ngIf="isSuccessful">
       Your registration is successful!
     </div>
+    </mat-card-content>
+      </div>
+
   </div>
+  </mat-card>
 </div>

@@ -13,6 +13,18 @@ import { TokenStorageService } from '../_services/token-storage.service';
 })
 export class SeanceComponent implements OnInit {
 
+  markComp:any ={
+    titre:String,
+    description:String
+  }
+
+  onKeyTitre(event: any) { // without type info
+    this.markComp.titre = event.target.value;
+  }
+  onKeyDesc(event: any) { // without type info
+    this.markComp.description = event.target.value;
+  }
+
   n: number=0;
   asPrise: Boolean= false;
   prises: Prise[]=[];
@@ -26,7 +38,9 @@ export class SeanceComponent implements OnInit {
 
 
   form: any ={
-    seance: Seance
+    seance: Seance,
+    latitude:Number,
+    longitude:Number
   }
   isAccepted = false;
   userMail = "";
@@ -46,6 +60,12 @@ export class SeanceComponent implements OnInit {
       this.isAccepted =true;
     }
     )
+  }
+
+  createCoord(coords:any){
+    this.form.latitude=coords.lat;
+    this.form.longitude=coords.lng;
+
   }
 
   createPrise(prise : Prise){

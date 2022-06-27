@@ -1,56 +1,57 @@
 <form>
 
-  <div class="form-group">
-  <label for="espece">espèce</label>
-  <input
+  <div class="row">
 
-  type="text"
-  class="form-control"
-  name="espece"
-  [(ngModel)]="form.prise.espece"
-  required
-  #description="ngModel">
-</div>
+    <div class="col-5 mx-5 my-3">
+      <div class="form-group">
+        <mat-form-field [style.width.px]=480>
+          <mat-label for="nomLieu">nom du spot</mat-label>
+          <input matInput #nomLieu type="text" name="nomLieu" [(ngModel)]="form.prise.nomLieu" required
+            #description="ngModel">
+        </mat-form-field>
+      </div>
+    </div>
 
-<div class="form-group">
-  <label for="taille">taille (cm)</label>
-  <input
-  type="number"
-  class="form-control"
-  name="taille"
-  [(ngModel)]="form.prise.taille"
-  required
-  #description="ngModel">
-</div>
+    <div class="col-5 mx-5 my-3">
+      <div class="form-group">
+        <mat-form-field [style.width.px]=480>
+          <mat-label for="espece">espèce</mat-label>
+          <input matInput type="text" name="espece" [(ngModel)]="form.prise.espece" required #description="ngModel">
+        </mat-form-field>
+      </div>
+    </div>
 
-<div class="form-group">
-  <label for="poids">poids (kg)</label>
-  <input
-  type="number"
-  class="form-control"
-  name="poids"
-  [(ngModel)]="form.prise.poids"
-  required
-  #description="ngModel">
-</div>
+    <div class="col-5 mx-5 my-3">
+      <div class="form-group">
+        <mat-form-field [style.width.px]=480>
+          <mat-label for="taille">taille (cm)</mat-label>
+          <input matInput type="number" name="taille" [(ngModel)]="form.prise.taille" required #description="ngModel">
+        </mat-form-field>
+      </div>
+    </div>
 
-<div class="form-group">
-  <label for="nomLieu">nom du spot</label>
-  <input
-  #nomLieu
-  type="text"
-  class="form-control"
-  name="nomLieu"
-  [(ngModel)]="form.prise.nomLieu"
-  required
-  #description="ngModel">
-</div>
+    <div class="col-5 mx-5 my-3">
+      <div class="form-group">
+        <mat-form-field [style.width.px]=480>
+          <mat-label for="poids">poids (kg)</mat-label>
+          <input matInput type="number" name="poids" [(ngModel)]="form.prise.poids" required #description="ngModel">
+        </mat-form-field>
+      </div>
+    </div>
 
-<div class="form-group">
-  <button class="btn btn-primary btn-block" (click)="addPrise()">
-    Ajouter une Prise
-  </button>
-</div>
+
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="form-group">
+          <button mat-raised-button color="primary" (click)="addPrise()">
+            Ajouter une Prise
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 

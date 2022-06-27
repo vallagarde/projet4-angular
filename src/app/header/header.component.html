@@ -1,51 +1,33 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Pecadille</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/meteo">Meteo</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/seance">Seance</a>
-        </li>
 
-        <li class="nav-item">
+<mat-toolbar class="fixed-top">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" href="/">
+    <mat-icon>home</mat-icon>
+  </button>
+  <span>Pecadille</span>
 
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
-        </li>
-      </ul>
-    </div>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/login" *ngIf="!isLoggedIn">Se connecter</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/register" *ngIf="!isLoggedIn">s'enregistrer</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/admin" *ngIf="showAdminBoard">Admin</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/mod" *ngIf="showModeratorBoard">Moderateur</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/user" *ngIf="isLoggedIn">Utilisateur</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" *ngIf="isLoggedIn" (click)="logout()">Logout</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+  <a mat-button class="nav-link m-2" color="primary" href="/seance">Seance</a>
+
+  <a mat-button class="nav-link m-2" color="primary" href="/admin" *ngIf="showAdminBoard">Admin</a>
+
+  <a mat-button class="nav-link m-2" href="/mod" color="primary" *ngIf="showModeratorBoard">Moderateur</a>
+
+  <a mat-button class="nav-link m-2" href="/user" color="primary" *ngIf="isLoggedIn">Mon compte</a>
+
+  <span class="example-spacer"></span>
+
+  <a mat-button class="nav-link m-2" color="primary" *ngIf="isLoggedIn" (click)="logout()">Logout</a>
+
+  <a mat-button class="nav-link active m-2" color="primary" aria-current="page" href="/login"
+    *ngIf="!isLoggedIn">Se connecter</a>
+
+  <a mat-button class="nav-link m-2" color="primary" href="/register" *ngIf="!isLoggedIn">s'enregistrer</a>
+
+
+  <mat-icon class="mr-8">brightness_5</mat-icon>
+  <mat-slide-toggle (click)="changeMode()" class="mr-8" [checked]="isDark">
+  </mat-slide-toggle>
+  <mat-icon>bedtime</mat-icon>
+
+</mat-toolbar>
+
+<div class="container" style="height:60px"></div>

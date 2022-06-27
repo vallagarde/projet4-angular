@@ -1,26 +1,46 @@
 <form>
   <div class="row">
-    <div class="col-5 m-4">
-      <div class="container">
+    <div class="col-4 m-4">
+      <div class="container m-4 P5">
+
         <div class="form-group">
-          <label for="description">titre</label>
-          <input type="text" class="form-control" name="titre" [(ngModel)]="form.seance.titre" required
-            #description="ngModel">
+          <mat-form-field [style.width.px]=327 appearance="fill">
+            <mat-label>titre</mat-label>
+            <input matInput name="titre" [(ngModel)]="form.seance.titre" required #description="ngModel"
+              (keyup)="onKeyTitre($event)">
+          </mat-form-field>
         </div>
 
         <div class="form-group">
-          <label for="description">description</label>
-          <input type="text" class="form-control" name="description" [(ngModel)]="form.seance.description" required
-            #description="ngModel">
+          <mat-form-field [style.width.px]=327 appearance="fill">
+            <mat-label>description</mat-label>
+            <textarea matInput name="description" [(ngModel)]="form.seance.description" required #description="ngModel"
+              (keyup)="onKeyDesc($event)" cdkTextareaAutosize cdkAutosizeMinRows="12"
+              cdkAutosizeMaxRows="12"></textarea>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field [style.width.px]=327 appearance="fill">
+            <mat-label>latitude</mat-label>
+            <input matInput type="number" name="latitude" [(ngModel)]="form.latitude" required #description="ngModel">
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field [style.width.px]=327 appearance="fill">
+            <mat-label>longitude</mat-label>
+            <input matInput type="number" name="longitude" [(ngModel)]="form.longitude" required #description="ngModel">
+          </mat-form-field>
         </div>
 
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-5 m-4">
-        <app-map></app-map>
-      </div>
+
+    <div class="col-6 m-4">
+      <app-map [markerComp]="markComp" (childToParent)="createCoord($event)"></app-map>
+
 
     </div>
   </div>
@@ -72,10 +92,16 @@
   </mat-accordion>
 
 
-  <div class="form-group">
-    <button class="btn btn-primary btn-block" (click)="createSeance()">
-      Ajouter Seance
-    </button>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center mt-5">
+        <div class="form-group">
+          <button mat-raised-button color="primary" (click)="createSeance()">
+            Ajouter Seance
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 
 

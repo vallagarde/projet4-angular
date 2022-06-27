@@ -4,13 +4,28 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GoogleMapsModule } from '@angular/google-maps';
+
+
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material/core';
 import { MatInputModule} from '@angular/material/input';
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
-import { GoogleMapsModule } from '@angular/google-maps';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatTabsModule} from '@angular/material/tabs';
+
+
+
+
+
 
 
 
@@ -80,6 +95,14 @@ const MY_FORMATS = {
     MatExpansionModule,
     MatInputModule,
     MatMomentDateModule,
+    MatButtonModule,
+    MatCardModule,
+    MatProgressBarModule,
+    MatSnackBarModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatSlideToggleModule,
+    MatTabsModule,
     GoogleMapsModule,
   ],
   providers: [authInterceptorProviders,

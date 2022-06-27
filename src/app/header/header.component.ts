@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, EventEmitter, Inject, OnInit, Output, Renderer2 } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { TokenStorageService } from '../_services/token-storage.service';
 
 
@@ -14,10 +16,15 @@ export class HeaderComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
+  isDark!: boolean;
 
-  constructor(private tokenStorageService: TokenStorageService) {
+  constructor(private tokenStorageService: TokenStorageService ,@Inject(DOCUMENT) private document: Document,
+  private renderer: Renderer2) {
    }
   ngOnInit(): void {
+
+    this.isDark = window.sessionStorage.getItem('darkMode')=='true';
+
 
     this.isLoggedIn = !!this.tokenStorageService.getToken();
     if (this.isLoggedIn) {
@@ -32,6 +39,19 @@ export class HeaderComponent implements OnInit {
     this.tokenStorageService.signOut();
     window.location.reload();
   }
+
+  changeMode(){
+
+    this.isDark = !this.isDark;
+
+    this.childToParent.emit(this.isDark);
+  }
+
+
+  @Output()
+  childToParent = new EventEmitter<boolean>();
+
+
 
   }
 
