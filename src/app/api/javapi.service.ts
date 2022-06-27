@@ -26,13 +26,14 @@ export class JavapiService {
     return throwError(error);
   }
 
-  createSeance( titre: String, description: String,prises:Prise[], userEmail: String, _meteo:DataMeteo): Observable<Seance>{
+  createSeance( titre: String, description: String,prises:Prise[], userEmail: String, _meteo:DataMeteo, coordonees:Number[]): Observable<Seance>{ //utilisé dans seance.component.ts
     return this.http.post<Seance>(Seance_API+ "/seances", {
       description,
       titre,
       userEmail,
       prises,
-      meteoId: _meteo.id,
+      coordonees,
+      meteoId: _meteo.meteoId,
       meteoIndex: _meteo.index
     });
   }

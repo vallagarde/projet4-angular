@@ -55,7 +55,7 @@ export class SeanceComponent implements OnInit {
 
   createSeance(): void {
 
-    this.javapiService.createSeance(this.form.seance.titre, this.form.seance.description , this.prises, this.userMail, this._meteo).subscribe(
+    this.javapiService.createSeance(this.form.seance.titre, this.form.seance.description , this.prises, this.userMail, this._meteo, [this.form.latitude, this.form.longitude]).subscribe(
     data => {
       this.isAccepted =true;
     }
