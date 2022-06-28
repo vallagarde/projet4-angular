@@ -49,6 +49,7 @@ import { SeanceComponent } from './seance/seance.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { PriseComponent } from './prise/prise.component';
 import { MapComponent } from './map/map.component';
+import { SeancesComponent } from './seances/seances.component';
 
 
 
@@ -79,7 +80,8 @@ const MY_FORMATS = {
     ProfileComponent,
     SeanceComponent,
     PriseComponent,
-    MapComponent
+    MapComponent,
+    SeancesComponent
   ],
   imports: [
     BrowserModule,
@@ -105,8 +107,10 @@ const MY_FORMATS = {
     MatTabsModule,
     GoogleMapsModule,
   ],
-  providers: [authInterceptorProviders,
-    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },],
+  providers: [
+    authInterceptorProviders,
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

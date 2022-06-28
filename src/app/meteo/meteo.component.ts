@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { NodeapiService } from '../api/nodeapi.service';
 //import { Meteo } from '../models/meteo.model';
 import { DataMeteo } from '../models/datameteo.model';
@@ -34,6 +34,14 @@ export class MeteoComponent implements OnInit {
   selMonth!: string;
   selYear!: string;
 
+  @Input()
+  lat!: Number;
+
+
+  @Input()
+  long!: Number;
+
+
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     this.model = moment(event.value);
     this.selDate = this.model.format('DD');
@@ -54,11 +62,15 @@ export class MeteoComponent implements OnInit {
     .subscribe(
       (data) => {this._meteo = data}
     )
-
-
-
-
   }
+
+
+  getMeteobyCoords(){
+    this.api.getMeteobyDateandCoords(this.selYear,this.selMonth,this.selDate, [this.lat, this.long]).subscribe(
+      (data) => {this._meteo = data}
+    )
+  }
+
 
   validateMeteo(){
     this.childToParent.emit(this._meteo);

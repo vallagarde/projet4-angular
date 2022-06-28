@@ -87,7 +87,7 @@
           Temperature: {{_meteo.temp}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-meteo (childToParent)="getMeteo($event)"></app-meteo>
+      <app-meteo [lat]="form.latitude" [long]="form.longitude" (childToParent)="getMeteo($event)"></app-meteo>
     </mat-expansion-panel>
   </mat-accordion>
 
