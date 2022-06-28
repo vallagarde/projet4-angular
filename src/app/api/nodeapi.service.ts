@@ -33,6 +33,13 @@ getMeteobyDateandPlace(year:String, month:String, day:String, place: String ): O
 
 }
 
+getMeteobyDateandCoords(year:String, month:String, day:String, coords:Number[] ): Observable<DataMeteo>{
+  const headers = new HttpHeaders().set("Content-Type", "application/json");
+  let dateString=  year +"-"+ month+"-"+ day;
+  return this.http.get<DataMeteo>(NODE_API_URL + '/meteo/one/'+dateString +"/"+coords[0]+"/"+coords[1], { headers}).pipe(catchError(this.handleError))
+
+}
+
 
 private handleError(error: Response | any) {
   return throwError(error);

@@ -27,15 +27,26 @@ export class JavapiService {
   }
 
   createSeance( titre: String, description: String,prises:Prise[], userEmail: String, _meteo:DataMeteo, coordonees:Number[]): Observable<Seance>{ //utilisé dans seance.component.ts
+    const latitude= coordonees[0];
+    const longitude = coordonees[1];
+
+
     return this.http.post<Seance>(Seance_API+ "/seances", {
       description,
       titre,
       userEmail,
       prises,
-      coordonees,
+      latitude,
+      longitude,
       meteoId: _meteo.meteoId,
       meteoIndex: _meteo.index
     });
+  }
+
+  getSeances(): Observable<Seance[]>{
+    const headers = new HttpHeaders().set("Content-Type", "application/json");
+    return this.http.get<Seance[]>(Seance_API + '/seances', { headers}).pipe(catchError(this.handleError))
+
   }
 
 }

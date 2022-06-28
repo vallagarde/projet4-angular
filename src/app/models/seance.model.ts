@@ -4,7 +4,7 @@ export class Seance{
   constructor(
     public meteoId: Number,
 
-    public Titre: String,
+    public titre: String,
 
     public  description:String,
 

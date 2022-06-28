@@ -24,6 +24,11 @@
         <option value="Roscoff">Roscoff</option>
       </select>
 
+      <p>
+        {{lat}}
+        {{long}}
+      </p>
+
       <h1>{{sel.value}}</h1>
 
     </div>
@@ -32,6 +37,9 @@
     <div class="row">
       <button type="button" class="btn btn-primary" (click)="getMeteo(sel.value)">Chercher la météo</button>
     </div>
+    <div class="row">
+      <button type="button" class="btn btn-primary" (click)="getMeteobyCoords()">Chercher la météo by C</button>
+    </div>
   </div>
 
   <button type="button" class="btn btn-primary" (click)="validateMeteo()">Valider la météo</button>
@@ -39,17 +47,23 @@
   <table align="center" *ngIf="_meteo">
     <thead>
       <tr>
-        <th>Nom de ville</th>
-        <th>Direction du vent</th>
+        <th>Date</th>
+        <th>temperature</th>
+        <th>Couverture nuageuse</th>
+        <th>Precipitations</th>
+        <th>meteo</th>
+        <th>uv</th>
 
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>{{_meteo.meteoId}}</td>
-        <td><span class="material-symbols-outlined">
-          device_thermostat
-          </span>{{_meteo.temp}}</td>
+        <td>{{_meteo.datetime}}</td>
+        <td>{{_meteo.temp}}</td>
+          <td>{{_meteo.clouds}}</td>
+          <td>{{_meteo.precip}}</td>
+          <td>{{_meteo.weather}}</td>
+          <td>{{_meteo.uv}}</td>
       </tr>
     </tbody>
   </table>
