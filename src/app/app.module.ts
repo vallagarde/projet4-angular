@@ -50,6 +50,7 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { PriseComponent } from './prise/prise.component';
 import { MapComponent } from './map/map.component';
 import { SeancesComponent } from './seances/seances.component';
+import { VerificationComponent } from './verification/verification.component';
 
 
 
@@ -81,7 +82,8 @@ const MY_FORMATS = {
     SeanceComponent,
     PriseComponent,
     MapComponent,
-    SeancesComponent
+    SeancesComponent,
+    VerificationComponent
   ],
   imports: [
     BrowserModule,

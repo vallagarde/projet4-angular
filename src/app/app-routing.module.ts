@@ -9,6 +9,7 @@ import { MeteoComponent } from './meteo/meteo.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { SeanceComponent } from './seance/seance.component';
+import { VerificationComponent } from './verification/verification.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
   { path: 'seance', component: SeanceComponent },
+  { path: 'verify', component: VerificationComponent },
 
 ];
 
