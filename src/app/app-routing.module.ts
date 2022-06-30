@@ -9,17 +9,21 @@ import { MeteoComponent } from './meteo/meteo.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { SeanceComponent } from './seance/seance.component';
+import { VerificationComponent } from './verification/verification.component';
+import { AuthguardGuard } from './_services/authguard.guard';
+import { LoginGuard } from './_services/login.guard';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'meteo', component: MeteoComponent},
-  {path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'user', component: BoardUserComponent },
-  { path: 'mod', component: BoardModeratorComponent },
-  { path: 'admin', component: BoardAdminComponent },
-  { path: 'seance', component: SeanceComponent },
+  {path: 'login',canActivate:[LoginGuard], component: LoginComponent},
+  { path: 'register',canActivate:[LoginGuard], component: RegisterComponent },
+  { path: 'profile',canActivate:[AuthguardGuard], component: ProfileComponent },
+  { path: 'user',canActivate:[AuthguardGuard], component: BoardUserComponent },
+  { path: 'mod',canActivate:[AuthguardGuard], component: BoardModeratorComponent },
+  { path: 'admin',canActivate:[AuthguardGuard], component: BoardAdminComponent },
+  { path: 'seance', canActivate:[AuthguardGuard], component: SeanceComponent },
+  { path: 'verify', component: VerificationComponent },
 
 ];
 

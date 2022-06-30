@@ -39,4 +39,10 @@ export class AuthService {
   registerMod(username: string, email: string, password: string): Observable<any> {
     return this.register(username,email,password, ["mod"])
   }
+
+  verify(code:String): Observable<any>{
+    return this.http.post(AUTH_API + "verify", {code}, httpOptions)
+  }
+
+
 }
