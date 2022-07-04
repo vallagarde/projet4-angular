@@ -73,6 +73,7 @@ export class MeteoComponent implements OnInit {
 
 
   validateMeteo(){
+    this.getMeteobyCoords();
     this.childToParent.emit(this._meteo);
   }
 

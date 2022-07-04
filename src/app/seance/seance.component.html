@@ -45,6 +45,52 @@
     </div>
   </div>
 
+
+
+
+
+  <div class="row">
+    <div class="col-6">
+      <app-meteo [lat]="form.latitude" [long]="form.longitude" (childToParent)="getMeteo($event)"></app-meteo>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-4">
+      <mat-card *ngIf="asMeteo" class="text-centered">
+        <mat-card-title-group>
+
+        <mat-card-title>
+          {{_meteo.temp}} °C
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{_meteo.weather.description}}
+        </mat-card-subtitle>
+        <img mat-card-md-image src={{iconUrl}} >
+        </mat-card-title-group>
+        <mat-card-content>
+          <fa-icon [icon]="faWind"></fa-icon> {{_meteo.wind_spd}} km/h  {{_meteo.wind_cdir}}<br>
+          <fa-icon [icon]="faDroplet"></fa-icon> {{_meteo.precip}} mm <br>
+          <fa-icon [icon]="faDropletSlash"></fa-icon> {{_meteo.rh}} %
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+
+
+
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Ajouter une prise
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-prise (childToParent)="createPrise($event)"></app-prise>
+    </mat-expansion-panel>
+  </mat-accordion>
+
   <table class="table" *ngIf="asPrise">
     <thead>
       <tr>
@@ -66,37 +112,11 @@
   </table>
 
 
-
-  <mat-accordion class="example-headers-align">
-    <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Ajouter une prise
-        </mat-panel-title>
-        <mat-panel-description>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <app-prise (childToParent)="createPrise($event)"></app-prise>
-    </mat-expansion-panel>
-    <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Meteo
-        </mat-panel-title>
-        <mat-panel-description *ngIf="asMeteo">
-          Temperature: {{_meteo.temp}}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <app-meteo [lat]="form.latitude" [long]="form.longitude" (childToParent)="getMeteo($event)"></app-meteo>
-    </mat-expansion-panel>
-  </mat-accordion>
-
-
   <div class="container">
     <div class="row">
       <div class="col-md-12 text-center mt-5">
         <div class="form-group">
-          <button mat-raised-button color="primary" (click)="createSeance()">
+          <button mat-raised-button color="primary" (click)="createSeance()" [disabled]="!asMeteo">
             Ajouter Seance
           </button>
         </div>

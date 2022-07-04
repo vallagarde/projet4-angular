@@ -1,3 +1,5 @@
+import { Weather } from "./weather.model";
+
 export class DataMeteo{
   constructor(
     public moonrise_ts: number,
@@ -25,7 +27,7 @@ export class DataMeteo{
     public dewpt:number,
     public snow:number,
     public uv:number,
-    public weather:Object,
+    public weather:any,
     public wind_dir:number,
     public max_dhi:null,
     public clouds_hi:number,

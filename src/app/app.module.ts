@@ -22,6 +22,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatTabsModule} from '@angular/material/tabs';
 
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+
+
 
 
 
@@ -95,6 +98,7 @@ const MY_FORMATS = {
     HttpClientModule,
     NgbModule,
     BrowserAnimationsModule,
+    FontAwesomeModule,
     MatDatepickerModule,
     MatFormFieldModule,
     MatNativeDateModule,
