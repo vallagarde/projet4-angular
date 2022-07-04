@@ -51,6 +51,7 @@ import { PriseComponent } from './prise/prise.component';
 import { MapComponent } from './map/map.component';
 import { SeancesComponent } from './seances/seances.component';
 import { VerificationComponent } from './verification/verification.component';
+import { MeteoBoardComponent } from './meteo-board/meteo-board.component';
 
 
 
@@ -83,7 +84,8 @@ const MY_FORMATS = {
     PriseComponent,
     MapComponent,
     SeancesComponent,
-    VerificationComponent
+    VerificationComponent,
+    MeteoBoardComponent
   ],
   imports: [
     BrowserModule,
