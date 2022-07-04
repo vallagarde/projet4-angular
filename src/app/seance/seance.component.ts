@@ -5,6 +5,8 @@ import { DataMeteo } from '../models/datameteo.model';
 import { Prise } from '../models/prise.model';
 import { Seance } from '../models/seance.model';
 import { TokenStorageService } from '../_services/token-storage.service';
+import { faWind, faDroplet, faDropletSlash } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-seance',
@@ -27,7 +29,9 @@ export class SeanceComponent implements OnInit {
 
   n: number=0;
   asPrise: Boolean= false;
+  asCoordinate: Boolean=false;
   prises: Prise[]=[];
+  iconUrl: String='';
 
   asMeteo: Boolean =false;
   _meteo !: DataMeteo;
@@ -35,7 +39,9 @@ export class SeanceComponent implements OnInit {
   model!: NgbDateStruct;
   date!: {year: number, month: number};
   city_name = '';
-
+  faWind= faWind;
+  faDroplet= faDroplet;
+  faDropletSlash=faDropletSlash;
 
   form: any ={
     seance: Seance,
@@ -65,6 +71,7 @@ export class SeanceComponent implements OnInit {
   createCoord(coords:any){
     this.form.latitude=coords.lat;
     this.form.longitude=coords.lng;
+    this.asCoordinate=true;
 
   }
 
@@ -77,6 +84,11 @@ export class SeanceComponent implements OnInit {
   getMeteo(dataMeteo: DataMeteo){
 
     this._meteo=dataMeteo;
+    this._meteo.wind_spd = Math.round((this._meteo.wind_spd*3.6)*100)/100
+    this._meteo.rh = Math.round((this._meteo.rh)*100)/100
+    this._meteo.precip = Math.round((this._meteo.precip)*100)/100
+
+    this.iconUrl ="https://www.weatherbit.io/static/img/icons/"+this._meteo.weather.icon+".png"
     this.asMeteo=true;
   }
 

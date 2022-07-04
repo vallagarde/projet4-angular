@@ -1,12 +1,8 @@
-<html>
-<header>
 
-</header>
-<body>
 
   <div class="container">
     <div class="row">
-      <div class="col-5 m-4">
+      <div class="col-md-12 text-center mt-5">
         <mat-form-field>
           <input matInput [(ngModel)]="model" [matDatepicker]="picker"  (dateInput)="addEvent('input', $event)"
           (dateChange)="addEvent('change', $event)" placeholder="Choisissez une date" >
@@ -14,59 +10,19 @@
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
     </div>
-    <div class="col-5 m-4">
 
 
-      <select #sel class="form-select" aria-label="Default select example">
-        <option selected>Liste de Villes</option>
-        <option value="Picauville">Picauville</option>
-        <option value="Groix">Groix</option>
-        <option value="Roscoff">Roscoff</option>
-      </select>
-
-      <p>
-        {{lat}}
-        {{long}}
-      </p>
-
-      <h1>{{sel.value}}</h1>
-
-    </div>
-
-    </div>
-    <div class="row">
-      <button type="button" class="btn btn-primary" (click)="getMeteo(sel.value)">Chercher la météo</button>
-    </div>
-    <div class="row">
-      <button type="button" class="btn btn-primary" (click)="getMeteobyCoords()">Chercher la météo by C</button>
     </div>
   </div>
 
-  <button type="button" class="btn btn-primary" (click)="validateMeteo()">Valider la météo</button>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center mt-5">
+        <div class="form-group">
+          <button mat-raised-button color="primary"  (click)="validateMeteo()">Valider la  date</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <table align="center" *ngIf="_meteo">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>temperature</th>
-        <th>Couverture nuageuse</th>
-        <th>Precipitations</th>
-        <th>meteo</th>
-        <th>uv</th>
 
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{{_meteo.datetime}}</td>
-        <td>{{_meteo.temp}}</td>
-          <td>{{_meteo.clouds}}</td>
-          <td>{{_meteo.precip}}</td>
-          <td>{{_meteo.weather}}</td>
-          <td>{{_meteo.uv}}</td>
-      </tr>
-    </tbody>
-  </table>
-
-</body>
-</html>

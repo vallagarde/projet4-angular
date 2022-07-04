@@ -21,16 +21,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatTableModule} from '@angular/material/table';
 
 
 
-
-
-
-
-
-
-
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -51,6 +47,7 @@ import { PriseComponent } from './prise/prise.component';
 import { MapComponent } from './map/map.component';
 import { SeancesComponent } from './seances/seances.component';
 import { VerificationComponent } from './verification/verification.component';
+import { MeteoBoardComponent } from './meteo-board/meteo-board.component';
 
 
 
@@ -83,7 +80,8 @@ const MY_FORMATS = {
     PriseComponent,
     MapComponent,
     SeancesComponent,
-    VerificationComponent
+    VerificationComponent,
+    MeteoBoardComponent
   ],
   imports: [
     BrowserModule,
@@ -93,6 +91,7 @@ const MY_FORMATS = {
     HttpClientModule,
     NgbModule,
     BrowserAnimationsModule,
+    FontAwesomeModule,
     MatDatepickerModule,
     MatFormFieldModule,
     MatNativeDateModule,
@@ -107,6 +106,8 @@ const MY_FORMATS = {
     MatToolbarModule,
     MatSlideToggleModule,
     MatTabsModule,
+    MatStepperModule,
+    MatTableModule,
     GoogleMapsModule,
   ],
   providers: [
