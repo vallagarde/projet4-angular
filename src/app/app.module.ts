@@ -21,19 +21,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatTableModule} from '@angular/material/table';
+
+
 
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-
-
-
-
-
-
-
-
-
-
-
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -113,6 +106,8 @@ const MY_FORMATS = {
     MatToolbarModule,
     MatSlideToggleModule,
     MatTabsModule,
+    MatStepperModule,
+    MatTableModule,
     GoogleMapsModule,
   ],
   providers: [

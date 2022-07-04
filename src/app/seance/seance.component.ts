@@ -29,6 +29,7 @@ export class SeanceComponent implements OnInit {
 
   n: number=0;
   asPrise: Boolean= false;
+  asCoordinate: Boolean=false;
   prises: Prise[]=[];
   iconUrl: String='';
 
@@ -70,6 +71,7 @@ export class SeanceComponent implements OnInit {
   createCoord(coords:any){
     this.form.latitude=coords.lat;
     this.form.longitude=coords.lng;
+    this.asCoordinate=true;
 
   }
 

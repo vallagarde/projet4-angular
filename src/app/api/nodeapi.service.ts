@@ -20,6 +20,12 @@ getMeteobyId(meteoId: number): Observable<Meteo>{
 
 }
 
+getMeteoByIdAndIndex(meteoId:Number, meteoIndex:Number): Observable<DataMeteo>{
+  const headers = new HttpHeaders().set("Content-Type", "application/json");
+  return this.http.get<DataMeteo>(NODE_API_URL + '/meteo/one/'+meteoId+"/"+meteoIndex , { headers}).pipe(catchError(this.handleError))
+
+}
+
 getMeteos(): Observable<Meteo[]>{
   const headers = new HttpHeaders().set("Content-Type", "application/json");
   return this.http.get<Meteo[]>(NODE_API_URL + '/meteo', { headers}).pipe(catchError(this.handleError))
