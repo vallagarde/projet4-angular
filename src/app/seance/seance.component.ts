@@ -20,34 +20,31 @@ export class SeanceComponent implements OnInit {
     description:String
   }
 
-  onKeyTitre(event: any) { // without type info
-    this.markComp.titre = event.target.value;
-  }
-  onKeyDesc(event: any) { // without type info
-    this.markComp.description = event.target.value;
-  }
-
   n: number=0;
-  asPrise: Boolean= false;
-  asCoordinate: Boolean=false;
   prises: Prise[]=[];
-  iconUrl: String='';
 
-  asMeteo: Boolean =false;
   _meteo !: DataMeteo;
 
   model!: NgbDateStruct;
   date!: {year: number, month: number};
   city_name = '';
+
+  //les icones
   faWind= faWind;
   faDroplet= faDroplet;
   faDropletSlash=faDropletSlash;
+  iconUrl: String='';
 
   form: any ={
     seance: Seance,
     latitude:Number,
     longitude:Number
   }
+
+  //les booleans de verification
+  asMeteo: Boolean =false;
+  asPrise: Boolean= false;
+  asCoordinate: Boolean=false;
   isAccepted = false;
   userMail = "";
 
@@ -63,7 +60,11 @@ export class SeanceComponent implements OnInit {
 
     this.javapiService.createSeance(this.form.seance.titre, this.form.seance.description , this.prises, this.userMail, this._meteo, [this.form.latitude, this.form.longitude]).subscribe(
     data => {
+      console.log("dans le seancecomponent: lat= "+ this.form.latitude)
       this.isAccepted =true;
+      this.form.seance= undefined;
+      this.form.latitude=0;
+      this.form.longitude=0;
     }
     )
   }
@@ -90,6 +91,13 @@ export class SeanceComponent implements OnInit {
 
     this.iconUrl ="https://www.weatherbit.io/static/img/icons/"+this._meteo.weather.icon+".png"
     this.asMeteo=true;
+  }
+
+  onKeyTitre(event: any) { // without type info
+    this.markComp.titre = event.target.value;
+  }
+  onKeyDesc(event: any) { // without type info
+    this.markComp.description = event.target.value;
   }
 
 }

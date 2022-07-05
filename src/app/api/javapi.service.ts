@@ -30,14 +30,16 @@ export class JavapiService {
     const latitude= coordonees[0];
     const longitude = coordonees[1];
 
+    console.log("dans le service: lat= "+ latitude)
+
 
     return this.http.post<Seance>(Seance_API+ "/seances", {
       description,
       titre,
       userEmail,
       prises,
-      latitude,
-      longitude,
+      latitude : coordonees[0],
+      longitude : coordonees[1],
       meteoId: _meteo.meteoId,
       meteoIndex: _meteo.index
     });

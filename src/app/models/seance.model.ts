@@ -15,6 +15,10 @@ export class Seance{
 
     public meteodata: DataMeteo,
 
+    public latitude: Number,
+
+    public longitude: Number,
+
     public iconUrl: string,
 
     public dates: Date
