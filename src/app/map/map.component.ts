@@ -69,9 +69,9 @@ export class MapComponent implements OnInit {
       },
       label: {
         color: 'black',
-        text: this.markerComp.description,
+        text: this.markerComp.titre,
       },
-      title: this.markerComp.titre,
+      title: this.markerComp.description,
     }
   }
 

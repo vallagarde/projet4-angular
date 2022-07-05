@@ -15,6 +15,13 @@ export class SeancesComponent implements OnInit {
 
   constructor(private javapi : JavapiService, private nodeapi:NodeapiService) { }
 
+  markerComp: any[] = [{
+    titre: String,
+    description:String,
+    lat: Number,
+    lng:  Number
+  }];
+
 seances :Seance[]= [];
 _meteos :DataMeteo[] =[];
 _meteo!: DataMeteo;
@@ -25,6 +32,7 @@ displayedColumns: string[] = ["Lieu","Espece","Taille","Poids"];
 
 
 isActivated:Boolean=false;
+afficheCarte: Boolean = false;
 
 faWind= faWind;
 faDroplet= faDroplet;
@@ -33,9 +41,23 @@ faDropletSlash=faDropletSlash;
   ngOnInit(): void {
     this.javapi.getSeances().subscribe( data => {
       this.seances=data
-      });
-
+      for (let seance of this.seances){
+        this.markerComp.push({ titre:seance.titre , description:seance.description , lat:seance.latitude , lng:seance.longitude})
+      }
+    });
   }
+
+
+  voirSeances(){
+    for (let seance of this.seances){
+      this.markerComp.push({ titre:seance.titre , description:seance.description , lat:seance.latitude , lng:seance.longitude})
+    }
+    this.afficheCarte=true;
+  }
+  fermerSeances(){
+    this.afficheCarte=false;
+  }
+
   findMeteo(seance : number){
 
          this.nodeapi.getMeteoByIdAndIndex(this.seances[seance].meteoId,this.seances[seance].meteoIndex ).subscribe(data => {

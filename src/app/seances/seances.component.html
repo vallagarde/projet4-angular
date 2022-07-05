@@ -1,6 +1,4 @@
-<div class="row">
 
-</div>
 
 <div class="row">
   <div class="col-6">
@@ -79,10 +77,16 @@
         </ng-template>
       </mat-expansion-panel>
     </mat-accordion>
+
+
   </div>
 
-  <div class="col-6">
+  <div class="col-6  text-center">
 
+    <button mat-button color="primary" (click)="voirSeances()" *ngIf="!afficheCarte">Afficher la carte des séances</button>
+
+    <app-mapmarkers [markerComp]="markerComp" *ngIf="afficheCarte"></app-mapmarkers>
+    <button mat-button color="primary" (click)="fermerSeances()" *ngIf="afficheCarte">Cacher la carte des séances</button>
 
   </div>
 
