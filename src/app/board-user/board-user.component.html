@@ -1,114 +1,112 @@
 <mat-tab-group mat-align-tabs="center">
   <mat-tab label="Mes informations">
+    <div class="container" style="height:20px"></div>
+
     <div class="main-content">
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-8">
-            <div class="card">
-              <div class="card-header card-header-danger">
-                <h4 class="card-title">Edit Profile</h4>
-                <p class="card-category">Complete your profile</p>
-              </div>
+            <mat-card>
+              <mat-card-header>
+                  <mat-card-title-group>
+                    <mat-card-title>
+                      <h4 class="card-title">Bienvenue </h4>
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                      <p class="card-category">Consultez et modifiez votre profil</p>
+                    </mat-card-subtitle>
+                  </mat-card-title-group>
+
+              </mat-card-header>
               <div class="card-body">
                 <form>
                   <div class="row">
-                    <div class="col-md-5">
-                      <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Company (disabled)" disabled>
-                      </mat-form-field>
+                    <div class="col-md-6">
+                      <mat-label>{{form.username}}</mat-label>
                     </div>
-                    <div class="col-md-3">
-                      <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Username">
-                      </mat-form-field>
-                    </div>
-                    <div class="col-md-4">
-                      <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Email address" type="email">
-                      </mat-form-field>
+                    <div class="col-md-6">
+                      <div class="col-md-6">
+                        <mat-label>{{form.adresseMail}}</mat-label>
+                      </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-6">
                       <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Fist Name" type="text">
+                        <input matInput [(ngModel)]="form.prenom" placeholder="Prénom" name="prenom">
                       </mat-form-field>
                     </div>
                     <div class="col-md-6">
                       <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Last Name" type="text">
+                        <input matInput [(ngModel)]="form.nom" placeholder="Nom" name="nom">
                       </mat-form-field>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-12">
                       <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Adress" type="text">
+                        <input matInput [(ngModel)]="form.adresse" placeholder="Adresse" name="adresse">
                       </mat-form-field>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-4">
                       <mat-form-field class="example-full-width">
-                        <input matInput placeholder="City" type="text">
+                        <input matInput [(ngModel)]="form.ville" placeholder="Ville" name="ville">
                       </mat-form-field>
                     </div>
                     <div class="col-md-4">
                       <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Country" type="text">
+                        <input matInput [(ngModel)]="form.pays" placeholder="Pays" name="pays">
                       </mat-form-field>
                     </div>
                     <div class="col-md-4">
                       <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Postal Code" type="text">
+                        <input matInput [(ngModel)]="form.codePostal" placeholder="Code Postal" name="codePostal">
                       </mat-form-field>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-md-12">
-                      <label>About Me</label>
-                      <mat-form-field class="example-full-width">
-                        <textarea matInput
-                          placeholder="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."></textarea>
-                      </mat-form-field>
-                      <!-- <div class="form-group">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                                            <textarea class="form-control" rows="5"></textarea>
-                                        </div>
-                                    </div> -->
-                    </div>
+
                   </div>
-                  <button mat-raised-button type="submit" class="btn btn-danger pull-right">Update Profile</button>
+                  <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="maj()">mettre a
+                    jour le profil</button>
                   <div class="clearfix"></div>
                 </form>
               </div>
-            </div>
+            </mat-card>
           </div>
           <div class="col-md-4">
-            <div class="card card-profile">
-              <div class="card-avatar">
-                <a href="javascript:void(0)">
-                  <img class="img" src="./assets/img/faces/marc.jpg" />
-                </a>
-              </div>
-              <div class="card-body">
-                <h6 class="card-category text-gray">CEO / Co-Founder</h6>
-                <h4 class="card-title">Alec Thompson</h4>
+            <mat-card>
+              <mat-card-title>
+                <h4 class="card-title">Résumé de vos pêches:</h4>
+              </mat-card-title>
+              <mat-card-content>
                 <p class="card-description">
-                  Don't be scared of the truth because we need to restart the human foundation in truth And I love you
-                  like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                  Nombre de séances: {{seancenb}}
                 </p>
-                <a href="javascript:void(0)" class="btn btn-danger btn-round">Follow</a>
-              </div>
-            </div>
+                <p class="card-description">
+                  Nombre de prises: {{prises.length}}
+                </p>
+                <p class="card-description">
+                  Nombre moyen de prises par séance: {{moyenne}}
+                </p>
+              </mat-card-content>
+            </mat-card>
           </div>
         </div>
       </div>
     </div>
   </mat-tab>
-  <mat-tab label="Créer une séance"> <app-seance></app-seance></mat-tab>
+
+  <mat-tab label="Créer une séance">
+    <div class="container" style="height:20px"></div>
+    <app-seance></app-seance>
+  </mat-tab>
+
   <mat-tab label="Toutes mes séances">
+    <div class="container" style="height:20px"></div>
     <app-seances></app-seances>
   </mat-tab>
+
 </mat-tab-group>

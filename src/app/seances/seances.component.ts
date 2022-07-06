@@ -76,6 +76,10 @@ faDropletSlash=faDropletSlash;
     this.nodeapi.getMeteoByIdAndIndex(seance.meteoId,seance.meteoIndex ).subscribe(data => {
    //this._meteos.push(data);
     seance.meteodata = data;
+    seance.meteodata.wind_spd =seance.meteodata.wind_spd*3.6;
+    seance.meteodata.wind_spd = Math.round((seance.meteodata.wind_spd*3.6)*100)/100
+    seance.meteodata.rh = Math.round((seance.meteodata.rh)*100)/100
+    seance.meteodata.precip = Math.round((seance.meteodata.precip)*100)/100
    this.iconUrl ="https://www.weatherbit.io/static/img/icons/"+seance.meteodata.weather.icon+".png";
    seance.iconUrl =this.iconUrl;
    this.dataSource = seance.prises;

@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Component, EventEmitter, Inject, OnInit, Output, Renderer2 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { TokenStorageService } from '../_services/token-storage.service';
+import { faFish } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -17,6 +18,9 @@ export class HeaderComponent implements OnInit {
   showModeratorBoard = false;
   username?: string;
   isDark!: boolean;
+
+  //icons
+  faFish = faFish;
 
   constructor(private tokenStorageService: TokenStorageService ,@Inject(DOCUMENT) private document: Document,
   private renderer: Renderer2) {

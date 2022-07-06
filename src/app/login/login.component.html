@@ -64,7 +64,7 @@
         >
           <mat-error *ngIf="password.errors['required']">Mot de passe manquant</mat-error>
           <mat-error *ngIf="password.errors['minlength']">
-            Password must be at least 6 characters
+            Le mot de passe est minimum de 6 caractères
           </mat-error>
         </mat-error>
       </mat-form-field>
@@ -77,8 +77,8 @@
       </div>
       <div class="form-group">
         <mat-error
-          *ngIf="f.submitted && isLoginFailed"
-        >
+          *ngIf="f.submitted && isLoginFailed">
+
           Echec de connexion {{ errorMessage }}
       </mat-error>
       </div>

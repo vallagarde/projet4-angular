@@ -61,12 +61,14 @@ export class SeanceComponent implements OnInit {
     this.javapiService.createSeance(this.form.seance.titre, this.form.seance.description , this.prises, this.userMail, this._meteo, [this.form.latitude, this.form.longitude]).subscribe(
     data => {
       console.log("dans le seancecomponent: lat= "+ this.form.latitude)
-      this.isAccepted =true;
-      this.form.seance= undefined;
-      this.form.latitude=0;
-      this.form.longitude=0;
+
+    this.reloadPage();
+
     }
     )
+  }
+  reloadPage(): void {
+    window.location.reload();
   }
 
   createCoord(coords:any){
