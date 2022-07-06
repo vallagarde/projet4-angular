@@ -26,7 +26,7 @@ export class JavapiService {
     return throwError(error);
   }
 
-  createSeance( titre: String, description: String,prises:Prise[], userEmail: String, _meteo:DataMeteo, coordonees:Number[]): Observable<Seance>{ //utilisé dans seance.component.ts
+  createSeance( titre: String, description: String,prises:Prise[], userEmail: String, _meteo:DataMeteo, coordonees:Number[], date: String ): Observable<Seance>{ //utilisé dans seance.component.ts
     const latitude= coordonees[0];
     const longitude = coordonees[1];
 
@@ -41,7 +41,8 @@ export class JavapiService {
       latitude : coordonees[0],
       longitude : coordonees[1],
       meteoId: _meteo.meteoId,
-      meteoIndex: _meteo.index
+      meteoIndex: _meteo.index,
+      date
     });
   }
 

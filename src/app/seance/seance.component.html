@@ -60,7 +60,7 @@
 
   <div class="row">
     <div class="col-6">
-      <app-meteo [lat]="form.latitude" [long]="form.longitude" (childToParent)="getMeteo($event)"></app-meteo>
+      <app-meteo [lat]="form.latitude" [long]="form.longitude" (dateChildToParent)="getDate($event)" (childToParent)="getMeteo($event)"></app-meteo>
     </div>
     <div class="col-1"></div>
     <div class="col-4">

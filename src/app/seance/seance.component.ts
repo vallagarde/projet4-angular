@@ -25,6 +25,8 @@ export class SeanceComponent implements OnInit {
 
   _meteo !: DataMeteo;
 
+  _date!: String;
+
   model!: NgbDateStruct;
   date!: {year: number, month: number};
   city_name = '';
@@ -58,7 +60,7 @@ export class SeanceComponent implements OnInit {
 
   createSeance(): void {
 
-    this.javapiService.createSeance(this.form.seance.titre, this.form.seance.description , this.prises, this.userMail, this._meteo, [this.form.latitude, this.form.longitude]).subscribe(
+    this.javapiService.createSeance(this.form.seance.titre, this.form.seance.description , this.prises, this.userMail, this._meteo, [this.form.latitude, this.form.longitude], this._date).subscribe(
     data => {
       console.log("dans le seancecomponent: lat= "+ this.form.latitude)
 
@@ -82,6 +84,13 @@ export class SeanceComponent implements OnInit {
     let priseCloned : Prise =Object.assign({},prise); // clone pour le deep copy  de prise
     this.prises.push(priseCloned)
     this.asPrise=true;
+  }
+
+  getDate(date : String[]){
+
+    this._date= date[2]+"/"+date[1]+"/"+date[0];
+
+
   }
 
   getMeteo(dataMeteo: DataMeteo){
