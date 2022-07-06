@@ -75,10 +75,14 @@ export class MeteoComponent implements OnInit {
   validateMeteo(){
     this.getMeteobyCoords();
     this.childToParent.emit(this._meteo);
+    this.dateChildToParent.emit([this.selYear,this.selMonth,this.selDate])
   }
 
   @Output()
   childToParent = new EventEmitter<DataMeteo>();
+
+  @Output()
+  dateChildToParent = new EventEmitter<String[]>();
 
 
 
