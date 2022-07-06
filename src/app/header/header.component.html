@@ -1,7 +1,7 @@
 
 <mat-toolbar class="fixed-top">
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" href="/">
-    <mat-icon>home</mat-icon>
+    <fa-icon [icon]="faFish"></fa-icon>
   </button>
   <span>Pecadille</span>
 
@@ -15,12 +15,12 @@
 
   <span class="example-spacer"></span>
 
-  <a mat-button class="nav-link m-2" color="primary" *ngIf="isLoggedIn" (click)="logout()">Logout</a>
+  <a mat-button class="nav-link m-2" color="primary" *ngIf="isLoggedIn" (click)="logout()">Déconnection</a>
 
   <a mat-button class="nav-link active m-2" color="primary" aria-current="page" href="/login"
     *ngIf="!isLoggedIn">Se connecter</a>
 
-  <a mat-button class="nav-link m-2" color="primary" href="/register" *ngIf="!isLoggedIn">s'enregistrer</a>
+  <a mat-button class="nav-link m-2" color="primary" href="/register" *ngIf="!isLoggedIn">S'enregistrer</a>
 
 
   <mat-icon class="mr-8">brightness_5</mat-icon>

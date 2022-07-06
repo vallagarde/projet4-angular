@@ -28,6 +28,20 @@ export class AuthService {
     }, httpOptions);
   }
 
+
+  update(prenom: string, nom:string, adresse:string, ville:string, pays:string, codePostal:number): Observable<any> {
+    //console.log("dans le update"+ nom+ " "+ adresse + " "+ ville + " "+ pays+" "+codePostal)
+    return this.http.post("http://localhost:5000/api/auth/" + "updateuser", {
+      prenom,
+      nom,
+      adresse,
+      ville,
+      pays,
+      codePostal
+    }, httpOptions);
+  }
+
+
   registerUser(username: string, email: string, password: string): Observable<any> {
     return this.register(username,email,password, ["user"])
   }

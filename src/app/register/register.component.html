@@ -17,8 +17,7 @@
       S'enregistrer
       <br>
       <br>
-      <br>
-      <br>
+
     </mat-card-title>
     <mat-card-subtitle>
 
@@ -28,32 +27,32 @@
 
     <form
       *ngIf="!isSuccessful"
+      [formGroup]="registerForm"
       name="form"
-      (ngSubmit)="f.form.valid && onSubmit()"
-      #f="ngForm"
+      (ngSubmit)="onSubmit()"
       novalidate
     >
       <div class="form-group">
         <mat-form-field appearance="outline">
         <mat-label for="username">Nom d'utilisateur</mat-label>
         <input matInput
+        formControlName="username"
+        class="form-control"
           type="text"
           name="username"
-          [(ngModel)]="form.username"
           required
           minlength="3"
           maxlength="20"
-          #username="ngModel"
         />
-        <mat-error *ngIf="username.errors && f.submitted">
+        <mat-error *ngIf="fo['username'].errors && fo['submitted']">
 
-          <mat-error *ngIf="username.errors['required']">Username is required</mat-error>
-          <mat-error *ngIf="username.errors['minlength']">
-            Username must be at least 3 characters
+          <mat-error *ngIf="fo['username'].errors['required']">Le nom d'utilisateur est obligatoire</mat-error>
+          <mat-error *ngIf="fo['username'].errors['minlength']">
+            Le nom d'utilisateur doit contenir au moins 3 caractères
           </mat-error>
 
-          <mat-error *ngIf="username.errors['maxlength']">
-            Username must be at most 20 characters
+          <mat-error *ngIf="fo['username'].errors['maxlength']">
+            Le nom d'utilisateur ne doit pas contenir plus de 20 caractères
           </mat-error>
         </mat-error>
         </mat-form-field>
@@ -62,49 +61,70 @@
         <mat-form-field appearance="outline">
         <mat-label for="email">Email</mat-label>
         <input matInput
+        formControlName="email"
+        class="form-control"
           type="email"
           name="email"
-          [(ngModel)]="form.email"
           required
           email
-          #email="ngModel"
         />
-        <mat-error *ngIf="email.errors && f.submitted">
-          <mat-error *ngIf="email.errors['required']">Email is required</mat-error>
-          <mat-error *ngIf="email.errors['email']">
-            Email must be a valid email address
+        <mat-error *ngIf="fo['email'].errors && fo['submitted']">
+          <mat-error *ngIf="fo['email'].errors['required']">L' email est obligatoire</mat-error>
+          <mat-error *ngIf="fo['email'].errors['email']">
+            L'Email doit être valide
           </mat-error>
         </mat-error>
         </mat-form-field>
       </div>
       <div class="form-group">
         <mat-form-field appearance="outline">
-        <mat-label for="password">Password</mat-label>
+        <mat-label for="password">Mot de passe</mat-label>
         <input matInput
+          formControlName="password"
           type="password"
           name="password"
-          [(ngModel)]="form.password"
           required
           minlength="6"
-          #password="ngModel"
         />
-        <mat-error *ngIf="password.errors && f.submitted">
-          <mat-error *ngIf="password.errors['required']">Password is required</mat-error>
-          <mat-error *ngIf="password.errors['minlength']">
-            Password must be at least 6 characters
+        <mat-error *ngIf="fo['password'].errors && fo['submitted']">
+          <mat-error *ngIf="fo['password'].errors['required']">Le mot de passe est obligatoire</mat-error>
+          <mat-error *ngIf="fo['password'].errors['minlength']">
+            Le mot de passe doit contenir au moins 6 caractères
           </mat-error>
         </mat-error>
         </mat-form-field>
       </div>
       <div class="form-group">
-        <button mat-raised-button color="primary">Sign Up</button>
+        <mat-form-field appearance="outline">
+        <mat-label for="password">Verification mot de passe</mat-label>
+        <input matInput
+          formControlName="confirmPassword"
+          class="form-control"
+          type="password"
+          name="confirmPassword"
+          required
+          minlength="6"
+          [ngClass]="{ 'is-invalid': fo['submitted'] && fo['confirmPassword'].errors }"
+        />
+        <mat-error *ngIf="fo['confirmPassword'].errors && fo['submitted']">
+          <mat-error *ngIf="fo['confirmPassword'].errors['required']">Confirmez votre mot de passe</mat-error>
+          <mat-error *ngIf="fo['confirmPassword'].errors['mustMatch']">
+            Les deux mots de passe doivent être identiques
+          </mat-error>
+        </mat-error>
+        </mat-form-field>
       </div>
-      <mat-error *ngIf="f.submitted && isSignUpFailed">
-        Signup failed!<br />{{ errorMessage }}
+      <br>
+      <br>
+      <div class="form-group">
+        <button mat-raised-button color="primary">S'enregistrer</button>
+      </div>
+      <mat-error *ngIf="fo['submitted'] && isSignUpFailed">
+        Enregistrement échoué<br />{{ errorMessage }}
       </mat-error>
     </form>
     <div class="alert alert-success" *ngIf="isSuccessful">
-      Your registration is successful!
+      Enregistrement réussi ! <br> Vous allez recevoir un mail de confirmation vous permettant d'activer votre compte
     </div>
     </mat-card-content>
       </div>
