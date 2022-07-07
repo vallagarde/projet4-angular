@@ -8,7 +8,7 @@ import { TokenStorageService } from '../_services/token-storage.service';
 import { environment } from 'src/environments/environment.prod';
 
 
-const Seance_API = environment.Java_Api_Url;
+const Seance_API = environment.Java_Api_Url+"/seance/";
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -35,7 +35,7 @@ export class JavapiService {
     console.log("dans le service: lat= "+ latitude)
 
 
-    return this.http.post<Seance>(Seance_API+ "/seances", {
+    return this.http.post<Seance>(Seance_API+ "seances", {
       description,
       titre,
       userEmail,
@@ -50,7 +50,7 @@ export class JavapiService {
 
   getSeances(): Observable<Seance[]>{
     const headers = new HttpHeaders().set("Content-Type", "application/json");
-    return this.http.get<Seance[]>(Seance_API + '/seances', { headers}).pipe(catchError(this.handleError))
+    return this.http.get<Seance[]>(Seance_API + 'seances', { headers}).pipe(catchError(this.handleError))
 
   }
 

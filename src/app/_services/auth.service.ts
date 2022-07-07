@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 
 
-const AUTH_API = environment.Java_Api_Url;
+const AUTH_API = environment.Java_Api_Url+"/auth/";
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
