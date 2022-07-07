@@ -5,8 +5,10 @@ import { DataMeteo } from '../models/datameteo.model';
 import { Prise } from '../models/prise.model';
 import { Seance } from '../models/seance.model'
 import { TokenStorageService } from '../_services/token-storage.service';
+import { environment } from 'src/environments/environment.prod';
 
-const Seance_API = 'http://localhost:5000/api/seance';
+
+const Seance_API = environment.Java_Api_Url;
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
