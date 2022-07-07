@@ -7,15 +7,19 @@ stages:
     
 # This command is run before the execution of stages    
 before_script:
-    - npm install -g @angular/cli@13.3.5
-    - npm install
+    
 
 # Job One for making build
 build_master: 
   stage: build
   script:
+  - npm install -g @angular/cli@13.3.5
+  - npm install
   - ng build
   only: ['master']
+  artifacts:
+    paths:
+      - public
 
 # Job Two for deploy build to S3
 deploy_master:
