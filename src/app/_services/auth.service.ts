@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-const AUTH_API = 'http://localhost:5000/api/auth/';
+import { environment } from 'src/environments/environment.prod';
+
+
+const AUTH_API = environment.Java_Api_Url;
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -31,7 +34,7 @@ export class AuthService {
 
   update(prenom: string, nom:string, adresse:string, ville:string, pays:string, codePostal:number): Observable<any> {
     //console.log("dans le update"+ nom+ " "+ adresse + " "+ ville + " "+ pays+" "+codePostal)
-    return this.http.post("http://localhost:5000/api/auth/" + "updateuser", {
+    return this.http.post(AUTH_API + "updateuser", {
       prenom,
       nom,
       adresse,
