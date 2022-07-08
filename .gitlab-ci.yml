@@ -7,14 +7,19 @@ stages:
     
 # This command is run before the execution of stages    
 before_script:
-  - npm install
+    
 
 # Job One for making build
 build_master: 
   stage: build
   script:
-  - npm run build --prod
+  - npm install -g @angular/cli@13.3.5
+  - npm install
+  - ng build
   only: ['master']
+  artifacts:
+    paths:
+      - public
 
 # Job Two for deploy build to S3
 deploy_master:
@@ -23,5 +28,5 @@ deploy_master:
   before_script:
     - pip install awscli 
   script:
-    - aws s3 sync ./dist s3://vallagarde-myapp/ --acl=public-read --delete
+    - aws s3 sync ./public s3://vallagarde-myapp/ --acl=public-read --delete
   only: ['master']
