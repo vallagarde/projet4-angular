@@ -49,6 +49,7 @@ import { SeancesComponent } from './seances/seances.component';
 import { VerificationComponent } from './verification/verification.component';
 import { MeteoBoardComponent } from './meteo-board/meteo-board.component';
 import { MapmarkersComponent } from './mapmarkers/mapmarkers.component';
+import { MeteoPreferenceComponent } from './meteo-preference/meteo-preference.component';
 
 
 
@@ -83,7 +84,8 @@ const MY_FORMATS = {
     SeancesComponent,
     VerificationComponent,
     MeteoBoardComponent,
-    MapmarkersComponent
+    MapmarkersComponent,
+    MeteoPreferenceComponent
   ],
   imports: [
     BrowserModule,
