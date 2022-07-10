@@ -28,6 +28,10 @@ export class JavapiService {
     return throwError(error);
   }
 
+  /**
+   * PARTIE DE L4API TRAITANT LES SEANCES
+  */
+
   createSeance( titre: String, description: String,prises:Prise[], userEmail: String, _meteo:DataMeteo, coordonees:Number[], date: String ): Observable<Seance>{ //utilisé dans seance.component.ts
     const latitude= coordonees[0];
     const longitude = coordonees[1];
@@ -54,6 +58,17 @@ export class JavapiService {
 
   }
 
+    /**
+   *FIN DE LA PARTIE DE L4API TRAITANT LES SEANCES
+  */
+
+     /**
+   * PARTIE DE L4API TRAITANT LES PREFERENCES METEO
+  */
+
+          /**
+   * PARTIE DE L4API TRAITANT LES PREFERENCES METEO
+  */
 
 }
 

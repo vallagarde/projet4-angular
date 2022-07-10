@@ -1,17 +1,18 @@
 
 <mat-toolbar class="fixed-top">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" href="/">
+  <a mat-icon-button href="/home" class="nav-link m-2">
     <fa-icon [icon]="faFish"></fa-icon>
-  </button>
-  <span>Pecadille</span>
+  </a>
+  <span  href="/home">Pecadille</span>
 
-  <a mat-button class="nav-link m-2" color="primary" href="/seance"  *ngIf="isLoggedIn">Nouvelle seance</a>
 
   <a mat-button class="nav-link m-2" color="primary" href="/admin" *ngIf="showAdminBoard">Admin</a>
 
   <a mat-button class="nav-link m-2" href="/mod" color="primary" *ngIf="showModeratorBoard">Moderateur</a>
 
   <a mat-button class="nav-link m-2" href="/user" color="primary" *ngIf="isLoggedIn">Mon compte</a>
+
+  <a mat-button class="nav-link m-2" color="primary" href="/preference"  *ngIf="isLoggedIn">Alerte meteo</a>
 
   <span class="example-spacer"></span>
 

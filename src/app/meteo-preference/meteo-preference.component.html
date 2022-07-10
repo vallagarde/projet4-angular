@@ -1,0 +1,90 @@
+<div class="container" style="height: 30px"></div>
+<div class="container">
+<div class="row">
+  <div class="col-3" *ngFor="let meteoPreference of meteoPreferences">
+<mat-card>
+  <mat-card-title-group>
+    <mat-card-title>
+    </mat-card-title>
+    <mat-card-subtitle>
+
+    </mat-card-subtitle>
+  </mat-card-title-group>
+  <mat-card-content>
+    Temperature :  {{meteoPreference.tempMin}} - {{meteoPreference.tempMax}}<br>
+    Vitesse Vent: {{meteoPreference.ventMin}} - {{meteoPreference.ventMax}}
+  </mat-card-content>
+  <mat-card-footer>
+    <button mat-button (click)="supprimer(meteoPreference.id)">Supprimer</button>
+  </mat-card-footer>
+</mat-card>
+</div>
+<div class="col-3" *ngIf="!isCreating">
+  <button mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="ouvrirCreer()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+<div class="col-3" *ngIf="isCreating">
+  <mat-card>
+    <form>
+    <mat-card-title-group>
+      <mat-card-title>
+        Nouvelle Preference
+      </mat-card-title>
+      <mat-card-subtitle>
+
+      </mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-content>
+
+      <div class="form-group">
+        <mat-form-field  appearance="fill">
+          <mat-label>Temp-Minimum</mat-label>
+          <input matInput name="Temp-Minimum" type="number" [(ngModel)]="form.tempMin" required #description="ngModel">
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="fill">
+          <mat-label>Temp-Maximum</mat-label>
+          <input matInput name="Temp-Maximum" type="number" [(ngModel)]="form.tempMax" required #description="ngModel"
+          >
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field  appearance="fill">
+          <mat-label>Vent_Minimum (km/h)</mat-label>
+          <input matInput name="Vent_Minimum" type="number" [(ngModel)]="form.ventMin" required #description="ngModel"
+        >
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="fill">
+          <mat-label>Vent_Maximum (km/h)</mat-label>
+          <input matInput name="Vent_Maximum" type="number" [(ngModel)]="form.ventMax" required #description="ngModel"
+        >
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="fill">
+          <mat-label>Latitude</mat-label>
+          <input matInput name="latitude" type="number" [(ngModel)]="form.latitude" required #description="ngModel"
+          >
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="fill">
+          <mat-label>Longitude</mat-label>
+          <input matInput name="longitude" type="number" [(ngModel)]="form.longitude" required #description="ngModel"
+          >
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-footer>
+      <button mat-button (click)="creer()">Ajouter</button>
+    </mat-card-footer>
+  </form>
+  </mat-card>
+  </div>
+</div>
+</div>
+<div class="container" style="height: 20px"></div>

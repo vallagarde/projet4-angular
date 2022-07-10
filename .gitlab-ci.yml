@@ -1,10 +1,32 @@
 image: node:16.15
 
-pages:
+# This is the stages / task to perfom in jobs
+stages:
+  - build
+  - deploy
+    
+# This command is run before the execution of stages    
+before_script:
+    
+
+# Job One for making build
+build_master: 
+  stage: build
   script:
-    - npm install -g @angular/cli@13.3.5
-    - npm install
-    - ng build --base-href /projet4-angular/
+  - npm install -g @angular/cli@13.3.5
+  - npm install
+  - ng build
+  only: ['master']
   artifacts:
     paths:
       - public
+
+# Job Two for deploy build to S3
+deploy_master:
+  image: python:latest  
+  stage: deploy
+  before_script:
+    - pip install awscli 
+  script:
+    - aws s3 sync ./public s3://vallagarde-myapp/ --acl=public-read --delete
+  only: ['master']
