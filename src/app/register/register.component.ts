@@ -34,7 +34,8 @@ export class RegisterComponent implements OnInit {
   form: any = {
     username: null,
     email: null,
-    password: null
+    password: null,
+    passwordVerif: null,
   };
   isSuccessful = false;
   isSignUpFailed = false;
@@ -46,8 +47,10 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
 
     console.log("dans le submit")
-    const { username, email, password } = this.registerForm.value;
-    console.log(username + " "+ email)
+    const { username, email, password, confirmPassword } = this.registerForm.value;
+    console.log(username + " "+ email);
+
+    if (password == confirmPassword){
 
     this.authService.registerUser(username, email, password).subscribe(
       data => {
@@ -60,5 +63,9 @@ export class RegisterComponent implements OnInit {
         this.isSignUpFailed = true;
       }
     );
+  }
+  else{
+    this.isSignUpFailed = true;
+  }
   }
 }

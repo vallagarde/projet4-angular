@@ -1,7 +1,7 @@
-<div class="container" style="height: 30px"></div>
+<div class="container" style="height: 50px"></div>
 <div class="container">
 <div class="row">
-  <div class="col-3" *ngFor="let meteoPreference of meteoPreferences">
+  <div class="col-4" *ngFor="let meteoPreference of meteoPreferences">
 <mat-card>
   <mat-card-title-group>
     <mat-card-title>
@@ -11,8 +11,18 @@
     </mat-card-subtitle>
   </mat-card-title-group>
   <mat-card-content>
-    Temperature :  {{meteoPreference.tempMin}} - {{meteoPreference.tempMax}}<br>
-    Vitesse Vent: {{meteoPreference.ventMin}} - {{meteoPreference.ventMax}}
+    <div class="row">
+      <div class="col-8">
+    Temperature :  {{meteoPreference.tempMin}} - {{meteoPreference.tempMax}} °C<br>
+    Vitesse Vent: {{meteoPreference.ventMin}} - {{meteoPreference.ventMax}} km/h
+  </div>
+  <div class="col-4">
+    <a *ngIf="meteoPreference.ajd || meteoPreference.dmn">Les conditions météo sont bonnes </a>
+    <a *ngIf="meteoPreference.ajd">Aujourd'hui </a>
+    <a *ngIf="meteoPreference.ajd && meteoPreference.dmn">et </a>
+    <a *ngIf="meteoPreference.dmn">Demain</a>
+  </div>
+  </div>
   </mat-card-content>
   <mat-card-footer>
     <button mat-button (click)="supprimer(meteoPreference.id)">Supprimer</button>

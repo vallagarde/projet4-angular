@@ -17,5 +17,9 @@ constructor(
 	public latitude: Number,
 
 	public longitude: Number,
+
+  public ajd : boolean,
+
+  public dmn : boolean,
 ){}
 }
