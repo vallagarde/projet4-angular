@@ -25,13 +25,24 @@ export class MeteoPreferenceServiceService {
     } ,httpOptions)
   }
 
+  createMeteoPreferenceRaw( tempMin: Number, tempMax: Number, ventMin: Number, ventMax: Number,latitude:Number, longitude:Number): Observable<MeteoPreference>{
+
+    return this.http.post<MeteoPreference>(METEO_PREFERENCE_API +"preference", {
+      tempMin,
+      tempMax,
+      ventMin,
+      ventMax,
+      latitude,
+      longitude
+    } ,httpOptions)
+  }
   getAllMeteoPreference (): Observable<MeteoPreference[]>{
 
     return this.http.get<MeteoPreference[]>(METEO_PREFERENCE_API +"preferences",httpOptions);
   }
 
-  deleteMeteoPreference(meteoPreference: MeteoPreference): Observable<MeteoPreference>{
-    return this.http.delete<MeteoPreference>(METEO_PREFERENCE_API+"/"+meteoPreference.id, httpOptions)
+  deleteMeteoPreference(id: Number): Observable<MeteoPreference>{
+    return this.http.delete<MeteoPreference>(METEO_PREFERENCE_API+"preference/"+id, httpOptions)
   }
 
   updateMeteoPreference(meteoPreference: MeteoPreference): Observable<MeteoPreference>{
