@@ -15,7 +15,7 @@ import { AuthguardGuard } from './_services/authguard.guard';
 import { LoginGuard } from './_services/login.guard';
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent},
+  {path: '', component: HomeComponent},
   {path: 'meteo', component: MeteoComponent},
   {path: 'login',canActivate:[LoginGuard], component: LoginComponent},
   { path: 'register',canActivate:[LoginGuard], component: RegisterComponent },
